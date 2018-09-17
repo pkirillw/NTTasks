@@ -25,7 +25,7 @@ class ImportController
         $client = AmoCrm::getClient();
         $account = $client->account;
 
-        // Вывод информации об аккаунте
+        // Вывод информации об аккаунте check
         $accountData = $account->apiCurrent();
         if (empty($accountData['users'])) {
             return 'Empty AccountData[\'users\']';

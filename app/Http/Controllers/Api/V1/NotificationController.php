@@ -30,17 +30,34 @@ class NotificationController extends Controller
     {
         $response = [];
         if ($userId == 0) {
-            return $this->prepareReturn('_empty_task_id', 'error');
+            return $this->prepareReturn('_empty_user_id', 'error');
         }
         $notifications = Notifications::where([['user_id', '=', $userId], ['status', '=', '0']])->get();
         if (empty($notifications->toArray())) {
-            return $this->prepareReturn('_empty_task', 'error');
+            return $this->prepareReturn('_empty_notifications', 'error');
         }
         foreach ($notifications->toArray() as $item) {
             if (time() < $item['calltime']) {
                 continue;
             }
             $response[] = $item;
+        }
+        return $this->prepareReturn($response);
+    }
+
+    /**
+     * @param $userId
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAllUserNotifications($userId)
+    {
+        if ($userId == 0) {
+            return $this->prepareReturn('_empty_user_id', 'error');
+        }
+        $notifications = Notifications::where([['user_id', '=', $userId]])->get();
+        $response = $notifications->toArray();
+        if (empty($response)) {
+            return $this->prepareReturn('_empty_notifications', 'error');
         }
         return $this->prepareReturn($response);
     }

@@ -52,10 +52,11 @@ Route::group([
 
     Route::group([
         'prefix' => 'notifications'
-    ], function (){
-       Route::get('getUserNotifications/{userId?}', 'NotificationController@getUserNotifications');
-       Route::get('getTaskNotifications/{taskId?}', 'NotificationController@getTaskNotifications');
-       Route::get('getNotification/{notificationId?}', 'NotificationController@getNotification');
-       Route::get('readNotification/{notificationId?}', 'NotificationController@readNotification');
+    ], function () {
+        Route::get('getUserNotifications/{userId?}', 'NotificationController@getUserNotifications');
+        Route::get('getAllUserNotifications/{userId?}', 'NotificationController@getAllUserNotifications');
+        Route::get('getTaskNotifications/{taskId?}', 'NotificationController@getTaskNotifications');
+        Route::get('getNotification/{notificationId?}', 'NotificationController@getNotification');
+        Route::get('readNotification/{notificationId?}', 'NotificationController@readNotification');
     });
 });

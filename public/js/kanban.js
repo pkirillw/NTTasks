@@ -1,7 +1,7 @@
 var apiServer = 'https://mail-nt-rt.ru/NTTasks/public/api/v1/';
 var path = 'https://mail-nt-rt.ru/NTTasks/public/';
-// var apiServer = 'https://tasks.pkirillw.ru/api/v1/';
-// var path = 'https://tasks.pkirillw.ru/public/';
+/*var apiServer = 'https://tasks.pkirillw.ru/api/v1/';
+var path = 'https://tasks.pkirillw.ru/public/';*/
 var userId = $('meta[name="user_id"]').attr('content');
 var mode = 'all';
 
@@ -505,6 +505,70 @@ function miniEditModal(id) {
 
 function setIntervalMenuModal() {
     $('#setIntervalMenuModal').modal('show');
+}
+
+function showNotificationModal() {
+    $('#notification_modal_active_body').html('');
+    $('#notification_modal_expired_body').html('');
+
+    var userId = $('meta[name="user_id"]').attr('content');
+    $.ajax({
+        type: "GET",
+        url: apiServer + "notifications/getAllUserNotifications/" + userId,
+    }).done(function (data) {
+        if (data.status == 'error') {
+            console.log(data);
+            $('#alert-danger').text('Ошибка при загрузке уведомлений');
+            $('#alert-danger').fadeIn();
+            setTimeout(function () {
+                $('#alert-danger').fadeOut();
+            }, 900);
+        }
+        if (data.status == 'success') {
+            var index_active = 1;
+            var index_expired = 1;
+            $.each(data.data, function (index, value) {
+                if (value.status == 0) {
+                    var selectedTable = 'active';
+                    var counter = index_active;
+                    index_active = index_active + 1;
+                    if (value.calltime < Math.floor(Date.now() / 1000)) {
+                        var status = 'Ожидает прочтения';
+                    } else {
+                        var status = 'Ожидает отправки';
+                    }
+                } else {
+                    var selectedTable = 'expired';
+                    var counter = index_expired;
+                    var status = 'Отправлено';
+                    index_expired = index_expired + 1;
+                }
+                $.ajax({
+                    type: 'GET',
+                    url: apiServer + 'tasks/get/' + value.task_id,
+                }).done(function (data) {
+                    if (data.status == 'error') {
+                        console.log(data);
+                        $('#alert-danger').text('Ошибка при получении данных о задаче');
+                        $('#alert-danger').fadeIn();
+                        setTimeout(function () {
+                            $('#alert-danger').fadeOut();
+                        }, 2000);
+                    } else {
+                        htmlData =
+                            '<tr>' +
+                            '   <td>' + counter + '</td>' +
+                            '   <td>' + data.data.number_request + ', ' + data.data.name.type_name + '</td>' +
+                            '   <td>' + status + '</td>' +
+                            '   <td>' + timeConverter(value.calltime) + '</td>' +
+                            '</tr>';
+                        $('#notification_modal_' + selectedTable + '_body').append(htmlData);
+                    }
+                });
+            });
+            $('#notificationModal').modal('show');
+        }
+    });
 }
 
 /**

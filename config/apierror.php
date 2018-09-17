@@ -40,6 +40,14 @@ return [
         'id' => 10,
         'text' => 'Отсутствуют комментарии к данной задаче'
     ],
+    '_empty_notification_id' => [
+        'id' => 11,
+        'text' => 'Отсутствует значение NotificationId'
+    ],
+    '_empty_notifications' => [
+        'id' => 12,
+        'text' => 'Отсутствует Notification в БД'
+    ],
 
 
 ];

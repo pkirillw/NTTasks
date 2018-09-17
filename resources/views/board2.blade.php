@@ -23,6 +23,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta name="user_id" content="{{ $user['id'] }}"/>
     <style>
+        .inner-pills {
+            padding: 10px;
+        }
+
         .icon-desktop {
             background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyOC43NXB4IiBoZWlnaHQ9IjI4Ljk5OHB4IiB2aWV3Qm94PSIwIDAgMjguNzUgMjguOTk4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyOC43NSAyOC45OTgiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnIGlkPSJJY29uc194NUZfQWxsIj48ZyBpZD0iRGFzaGJvYXJkX3g1Rl9uIj48Zz48cGF0aCBmaWxsPSIjQUFCMEI2IiBkPSJNMjIuMTA0LDQuNTc1Yy0xLjk3NC0xLjc0LTQuNTYyLTIuNjMzLTcuMTc3LTIuODAxdjEuMDkyYzAsMC40My0wLjM0NCwwLjc3Mi0wLjc3MSwwLjc3MmMtMC40MjQsMC0wLjc3MS0wLjM0Ny0wLjc3MS0wLjc3MlYxLjc3NGMtMi42MSwwLjE2OC01LjI1NCwxLjE4OC03LjIyMSwyLjkzbDAuNzY4LDAuNzc0YzAuMzAzLDAuMzA0LDAuMzAzLDAuNzkxLDAsMS4wOTNDNi43ODQsNi43MjEsNi41ODcsNi44LDYuMzkxLDYuOGMtMC4xOTYsMC0wLjM5NC0wLjA3NS0wLjU0NC0wLjIyOWwtMC43Ny0wLjc3MmMtMS43MzEsMS45NzktMy4wNDQsNC40NjUtMy4yMSw3LjA5NWgxLjA4NmMwLjQyNSwwLDAuNzY5LDAuMzQ4LDAuNzY5LDAuNzczYzAsMC40MjUtMC4zNDIsMC43NzItMC43NjksMC43NzJIMS44NjljLTAuNjEsMi41NTIsMC40ODYsNS41NywyLjEyMyw3LjA2bDAuNzY4LTAuNzc1YzAuMzAxLTAuMzAxLDAuNzg3LTAuMzAxLDEuMDg3LDBjMC4zLDAuMzA2LDAuMywwLjc5MSwwLDEuMDk3bC0xLjIyOSwxLjIzM2MtMC4wMjEsMC4wMjEtMC4wNDYsMC4wMjctMC4wNjksMC4wNDVjLTAuMDE5LDAuMDIxLTAuMDIyLDAuMDQ4LTAuMDQyLDAuMDYyYy0wLjAzNSwwLjAzNS0wLjEwOS0wLjAyMS0wLjM4My0wLjM1Yy0yLjMxNS0yLjc4NS0yLjk4NC01LjQzLTIuOTg0LTkuMDMyYzAtMy41OTQsMS42ODEtNi42NDYsNC4yMDMtOS4xODhjMi41MjQtMi41NDIsNC4zMzgtMy4zLDcuOTA4LTMuM2wwLjY0Mi0wLjE2OGMzLjA5NSwwLDUuODc2LDAuNTIzLDguMjAzLDIuMzg1YzAuMzU1LDAuMjg3LDAuNzA1LDAuNjAxLDEuMDQzLDAuOTM4YzIuNTIxLDIuNTM4LDQuMjYxLDUuNjY3LDQuMjYxLDkuMjY2YzAsMy42MDMtMS4wNTQsNy4zNDEtMy41NzcsOS44ODJjLTAuMTQ2LDAuMTQ5LTAuMzYzLDAuNDYzLTAuNTYyLDAuNDYzYy0wLjE5MSwwLDAtMC4wNzItMC4xNDYtMC4yMjhjLTAuMDItMC4wMjEtMC4wMjEtMC4wNDktMC4wNDEtMC4wNjVjLTAuMDIxLTAuMDIxLTAuMDQ5LTAuMDIxLTAuMDYzLTAuMDQ1bC0xLjAyMS0xLjAyMWMtMC4yOTktMC4zMDUtMC4yOTktMC43OTEsMC0xLjA5NGMwLjMwMS0wLjMwNywwLjc4NS0wLjMwNywxLjA4NiwwbDAuNzcxLDAuNzcxYzEuNzI5LTEuOTc5LDIuNzI1LTQuMjI5LDIuNzc5LTcuNjhoLTEuMDg2Yy0wLjQyNCwwLTAuNzcxLTAuMzQ2LTAuNzcxLTAuNzcxYzAtMC40MjUsMC4zNDQtMC43NzIsMC43NzEtMC43NzJoMS4wODRjLTAuMTY2LTIuNjM2LTEuMzQ2LTUuNDY1LTMuNDM4LTcuNDk0Ii8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQUFCMEI2IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0yNy4yNDYsMTQuMzg0YzAsNy4yMzEtNS43NzEsMTMuMDg4LTEyLjg4MywxMy4wODhjLTcuMTE1LDAtMTIuODg1LTUuODU0LTEyLjg4NS0xMy4wODhDMS40NzgsNy4xNTUsNy4yNDksMS4zLDE0LjM2MywxLjNDMjEuNDc2LDEuMywyNy4yNDYsNy4xNTcsMjcuMjQ2LDE0LjM4NHoiLz48L2c+PGc+PGc+PHBhdGggZmlsbD0iI0FBQjBCNiIgZD0iTTIxLjYxLDUuMjQ1TDE2LjE0LDE0LjQyYy0wLjAxOSwwLjAyMS0wLjAyNiwwLjA1MS0wLjA0MywwLjA3M2MtMC4wNTIsMC4xMDQtMC4xMDYsMC4yMDQtMC4xNzcsMC4yOTVjLTAuMDEsMC4wMTItMC4wMiwwLjAyMS0wLjAyMSwwLjAzM2MtMC4wMSwwLjAwOC0wLjAxOSwwLjAxOC0wLjAyMSwwLjAyMWMtMC4zNzksMC40OC0wLjkzMSwwLjc2My0xLjUxOSwwLjc2M2MtMC4wOTksMC0wLjE5Ni0wLjAxMi0wLjI5NS0wLjAyMWMtMS4wNjctMC4xNjYtMS44MDYtMS4xODgtMS42NC0yLjI3NmMwLjA5LTAuNjA0LDAuNDI0LTAuOTkzLDAuNjg4LTEuMjE4YzAuMDMxLTAuMDI1LDAuMDYyLTAuMDU5LDAuMDkxLTAuMDg3TDIxLjYxLDUuMjQ1IE0yNS4zODYsMC45MDRoMC4wMDRIMjUuMzg2eiBNMjUuMzg2LDAuOTA0bC0xMi45NCwxMC4zOThsMC4wMDgsMC4wMWMtMC41MzMsMC40NTQtMC45MiwxLjA4Ny0xLjAzNCwxLjg0MmMtMC4yNSwxLjY0NywwLjg2NiwzLjE5MSwyLjQ4OCwzLjQ0NWMwLjE0OCwwLjAyMSwwLjMwMiwwLjAzNSwwLjQ1LDAuMDM1YzAuOTIzLDAsMS43NjctMC40NDcsMi4zMTctMS4xNTZsMC4wMTIsMC4wMTRsMC4wNi0wLjEwNGMwLjEwNC0wLjE0MywwLjE4OC0wLjI4OCwwLjI3LTAuNDQ0TDI1LjM4NiwwLjkwNEwyNS4zODYsMC45MDR6Ii8+PC9nPjxnPjxwb2x5Z29uIGZpbGw9IiNBQUIwQjYiIHBvaW50cz0iMjMuNjY4LDIuODM5IDIyLjc4MSwzLjI1OCAyMy40MDYsMy45MjMgIi8+PC9nPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNBQUIwQjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTguMDA5LDIxLjU1OGMwLDAuNzcxLTAuNjA5LDEuMzk2LTEuMzcxLDEuMzk2aC01LjE4NmMtMC43NTksMC0xLjM3Mi0wLjYyNS0xLjM3Mi0xLjM5NnYtMC4yMjljMC0wLjc3MSwwLjYxMy0xLjM5NiwxLjM3Mi0xLjM5Nmg1LjE4NmMwLjc2MiwwLDEuMzcxLDAuNjIzLDEuMzcxLDEuMzk2VjIxLjU1OHoiLz48L2c+PC9nPjwvc3ZnPg==);
             height: 30px;
@@ -256,6 +260,8 @@
                     </li>
                     <li class="dropdown-divider"></li>
                     <li class="dropdown-item" onclick="changeMode('end')">Завершенные</li>
+                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-item" onclick="showNotificationModal()">Уведомления</li>
                 </ul>
             </div>
         </div>
@@ -575,6 +581,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="endTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -610,6 +617,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="addComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog  modal-lg" role="document">
@@ -748,6 +756,70 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Уведомления</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-fill nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                           aria-controls="pills-home" aria-selected="true">Активные</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">Завершенные</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                         aria-labelledby="pills-home-tab">
+                        <div class="inner-pills">
+                            <table class="table table-sm" id="notification_modal_active">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Задача</th>
+                                    <th>Статус</th>
+                                    <th>Время уведомления</th>
+                                </tr>
+                                </thead>
+                                <tbody id="notification_modal_active_body">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="inner-pills">
+                            <table class="table table-sm" id="notification_modal_expired">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Задача</th>
+                                    <th>Статус</th>
+                                    <th>Время уведомления</th>
+                                </tr>
+                                </thead>
+                                <tbody id="notification_modal_expired_body">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="alert alert-success" role="alert" id="alert-success" style="width: 20%;
     float: right;
     bottom: 20px;

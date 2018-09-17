@@ -1,0 +1,29 @@
+<div class="modalTasks_endTask_main">
+    <div class="modalTasks_endTask_title">
+        Вы уверены что хотите закрыть задачу
+        <br>
+        {{ task.number_request }}
+    </div>
+    <div class="modalTasks_endTask_buttons">
+        <button class="modalTasks_endTask_button modal-body__close"
+                onclick="TaskPlusLibrary.endTaskFunction({{ task.id }})"
+                style="background: #e53935;
+                       color: #fff;
+                       border-color: #b71c1c;
+                       position: absolute;
+                       left: 30px;
+                       width: 100px;
+                       top: initial;">
+            Закрыть
+        </button>
+        <button class="modalTasks_endTask_button modal-body__close"
+                style="position: absolute;
+                       right: 30px;
+                       width: 100px;
+                       background: #eee;
+                       border-color: #ccc;
+                       top: initial;">
+            Отменить
+        </button>
+    </div>
+</div>

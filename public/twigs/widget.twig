@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://toert.github.io/Isolated-Bootstrap/versions/3.3.7/iso_bootstrap3.3.7min.css">
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="{{ taskPlusSettings.assetsPath }}js/jquery.datetimepicker.full.js"></script>
+<link rel="stylesheet" href="{{ taskPlusSettings.assetsPath }}css/jquery.datetimepicker.min.css"/>
+<link rel="stylesheet" href="{{ taskPlusSettings.assetsPath }}css/leftTasksWidget.css"/>
+<meta charset="utf-8">
+
+<div class="leftTasks_addTask">
+    <span onclick="TaskPlusLibrary.addTask();" style="color: #4d89ed; text-transform: uppercase; font-weight: bold;">
+        <img src="{{ taskPlusSettings.assetsPath }}images/outline-add-24px.svg" style="    margin: -6px 0px;">
+        Добавить дело
+    </span>
+    <span onclick="TaskPlusLibrary.getData();" style="position: absolute; right: 10px;">
+        <img src="{{ taskPlusSettings.assetsPath }}images/icon_reload.svg" id="leftTasks_iconReload"
+             style="  width: 17px;">
+    </span>
+</div>
+<div class="leftTasks_allTasks"></div>

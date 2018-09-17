@@ -1,0 +1,20 @@
+.nav__menu__item__icon.icon-mas {
+    width: 34px;
+    height: 37px;
+}
+
+html.firefox .nav__menu__item__icon.icon-mas {
+    height: 37px;
+}
+
+.nav__menu__item__icon.icon-mas:before {
+    background-image: url("https://tasks.pkirillw.ru/public/images/logo_normal.svg")
+}
+
+.nav__menu:not(.nav__menu-no-selected) .nav__menu__item-selected .icon-mas:before, .nav__menu__item-selected-fake .icon-mas:before {
+    background-image: url("https://tasks.pkirillw.ru/public/images/logo_active.svg")
+}
+
+html.no-touch .nav__menu__item:hover:not(.nav__menu__item-selected) .icon-mas:before, html.touch .nav__menu__item:active:not(.nav__menu__item-selected) .icon-mas:before {
+    background-image: url("https://tasks.pkirillw.ru/public/images/logo_focus.svg")
+}

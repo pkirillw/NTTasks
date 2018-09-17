@@ -1,0 +1,152 @@
+<meta charset="utf-8">
+<script
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+<style>
+    .leftTasks_panel {
+        border: 1px solid #aaa;
+        font: 15px PT Sans, Arial, sans-serif;
+        border-radius: 3px;
+        border-left: 5px solid;
+        margin-bottom: 10px;
+    }
+
+    .leftTasks_panel_header {
+        padding: 10px;
+        border-bottom: 1px solid #dee2e6 !important;
+    }
+
+    .border_success {
+        border-left-color: #24a65c !important;
+    }
+
+    .border_danger {
+        border-left-color: #f2984a !important;
+    }
+
+    .border_warning {
+        border-left-color: #eb5757 !important;
+    }
+
+    .leftTasks_header_title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .leftTasks_header_date {
+        font-size: 14px;
+        color: #6c757d !important;
+    }
+
+    .leftTasks_panel_body {
+        padding: 10px;
+    }
+
+    .leftTasks_comment {
+        padding-bottom: 10px;
+    }
+
+    .leftTasks_menu {
+        text-align: center;
+    }
+
+    .leftTasks_addTask {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .leftTasks_button {
+        color: #fff;
+        padding: 5px;
+        background-color: #007bff;
+        border: 1px solid #005cbf;
+        margin: 5px auto;
+        width: 100%;
+        border-radius: 3px;
+    }
+</style>
+
+<script>
+    function showFullTask(id) {
+        $("#leftTask_body_" + id).toggle("slow", function () {
+        });
+    };
+</script>
+
+<div style="position: absolute; width: 265px; right: 0; font: 15px PT Sans, Arial, sans-serif;">
+    <div class="leftTasks_addTask">
+       <span style="color: #4d89ed;
+    text-transform: uppercase;
+    font-weight: bold;">
+           <img src="https://tasks.pkirillw.ru/public/images/outline-add-24px.svg" style="    margin: -6px 0px;">
+           Добавить дело
+       </span>
+        <span style="
+    position: absolute;
+    right: 10px;
+    top: -4px;
+">
+            <img src="https://tasks.pkirillw.ru/public/images/icon_reload.svg" style="  width: 24px;">
+        </span>
+    </div>
+
+    <div class="leftTasks_panel" id="leftTask_0">
+        <div class="leftTasks_panel_header" onclick="showFullTask(0)">
+            <div class="leftTasks_header_title">
+                + item.number_request + <br>
+                <small> + item.pipeline.name +</small>
+            </div>
+            <div class="leftTasks_header_date">
+                ( + item.complite_till_format + )
+            </div>
+        </div>
+        <div class="leftTasks_panel_body" id="leftTask_body_0" style="display: none;">
+            <div class="leftTasks_comment">
+                <p> + item.comment + </p>
+            </div>
+            <div class="leftTasks_menu">
+                        <span data-toggle="tooltip" data-placement="top" title="Изменить таймер">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-av_timer-24px.svg" onclick="changeStatus(0)">
+                                                            </span>
+                <span data-toggle="tooltip" data-placement="top" title="Изменить задачу">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-description-24px.svg"
+                     onclick="changeTimer(0)">
+                                                                </span>
+                <span data-toggle="tooltip" data-placement="top" title="Завершить задачу">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-done_outline-24px.svg" onclick="endTask(0)">
+                                                                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="leftTasks_panel" id="leftTask_1">
+        <div class="leftTasks_panel_header" onclick="showFullTask(1)">
+            <div class="leftTasks_header_title">
+                + item.number_request + <br>
+                <small> + item.pipeline.name +</small>
+            </div>
+            <div class="leftTasks_header_date">
+                ( + item.complite_till_format + )
+            </div>
+        </div>
+        <div class="leftTasks_panel_body" id="leftTask_body_1" style="display: none;">
+            <div class="leftTasks_comment">
+                <p> + item.comment + </p>
+            </div>
+            <div class="leftTasks_menu">
+                        <span data-toggle="tooltip" data-placement="top" title="Изменить таймер">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-av_timer-24px.svg" onclick="changeStatus(1)">
+                                                            </span>
+                <span data-toggle="tooltip" data-placement="top" title="Изменить задачу">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-description-24px.svg"
+                     onclick="changeTimer(1)">
+                                                                </span>
+                <span data-toggle="tooltip" data-placement="top" title="Завершить задачу">
+                <img src="https://tasks.pkirillw.ru/public/images/outline-done_outline-24px.svg" onclick="endTask(1)">
+                                                                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+

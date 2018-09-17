@@ -1,0 +1,20 @@
+<div class="bootstrap" id="addCommentModal">
+    <div style="margin: 0;
+        margin-bottom:  10px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom:  10px;
+        font-size: 18px;">
+        Добавление комментария для {{ task.number_request }}
+    </div>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Комментарий</label>
+        <textarea name="comment" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary modal-body__close"
+                onclick="TaskPlusLibrary.addCommentFunction({{ task.id }})"
+                style="position: inherit;">Добавить комментарий
+        </button>
+    </div>
+</div>

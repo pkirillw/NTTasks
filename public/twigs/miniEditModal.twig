@@ -1,0 +1,35 @@
+<div class="bootstrap" id="miniEditModal">
+    <div style="margin: 0;
+        margin-bottom:  10px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom:  10px;
+        font-size: 18px;">
+        Быстрое редактирование {{ task.number_request }}
+    </div>
+    <div class="form-group">
+        <label>Время окончания задачи</label>
+        <div class="input-group">
+            <input class="form-control" name="complite_till"
+                   type="text" value="{{ task.complite_till_format }}" id="datetimepicker1">
+            <div class="input-group-addon" onclick="$('#datetimepicker1').datetimepicker('show');"><span
+                        class="ion-calendar"></span></div>
+        </div>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" name="notification" id="edit_notification">
+        <label class="form-check-label" for="edit_notification">
+            Уведомить за 5 минут? <span id="miniEdit_notification_text"></span>
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Комментарий</label>
+        <textarea name="comment" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary modal-body__close"
+                onclick="TaskPlusLibrary.miniEditFunction({{ i }})"
+                style="position: inherit;">Отредактировать
+        </button>
+    </div>
+</div>

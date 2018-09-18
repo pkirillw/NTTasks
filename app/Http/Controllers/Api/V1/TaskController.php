@@ -260,14 +260,16 @@ class TaskController extends Controller
             $newComment->text = $request->comment;
             $newComment->save();
         }
-        if ($request->notification)
-        {
+        if ($request->notification == 'true') {
             $newNotification = new Notifications();
             $newNotification->user_id = $request->user_id;
             $newNotification->task_id = $newTask->id;
             $newNotification->status = 0;
-            $newNotification->calltime = ($newTask->complite_till - 5 * 60);
+            $newNotification->calltime = ($newTask->complite_till - 2 * 60);
             $newNotification->save();
+        } else {
+            $apiNotificationController = new NotificationController();
+            $apiNotificationController->removeTaskNotification($newTask->id);
         }
         return $this->prepareReturn($newTask->toArray());
     }
@@ -301,14 +303,16 @@ class TaskController extends Controller
             $newComment->text = $request->comment;
             $newComment->save();
         }
-        if ($request->notification)
-        {
+        if ($request->notification == 'true') {
             $newNotification = new Notifications();
             $newNotification->user_id = $request->user_id;
             $newNotification->task_id = $task->id;
             $newNotification->status = 0;
-            $newNotification->calltime = ($task->complite_till - 5 * 60);
+            $newNotification->calltime = ($task->complite_till - 2 * 60);
             $newNotification->save();
+        } else {
+            $apiNotificationController = new NotificationController();
+            $apiNotificationController->removeTaskNotification($task->id);
         }
         return $this->prepareReturn($task->toArray());
     }
@@ -344,14 +348,16 @@ class TaskController extends Controller
         $task = Tasks::where([['id', '=', $request->task_id]])->first();
         $task->complite_till = \DateTime::createFromFormat('d.m.Y H:i', $request->complite_till)->format('U');
         $task->save();
-        if ($request->notification)
-        {
+        if ($request->notification == 'true') {
             $newNotification = new Notifications();
             $newNotification->user_id = $task->user_id;
             $newNotification->task_id = $task->id;
             $newNotification->status = 0;
-            $newNotification->calltime = ($task->complite_till - 5 * 60);
+            $newNotification->calltime = ($task->complite_till - 2 * 60);
             $newNotification->save();
+        } else {
+            $apiNotificationController = new NotificationController();
+            $apiNotificationController->removeTaskNotification($task->id);
         }
         if ($request->comment != '') {
             $commentData = [

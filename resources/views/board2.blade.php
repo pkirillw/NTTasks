@@ -107,7 +107,10 @@
             display: inline-block;
             height: 20px;
         }
-
+        .card-subtitle:hover {
+            color: #000!important;
+            cursor: pointer;
+        }
         .inner-icon-edit {
             background: url({{url('/')}}/images/new/edit-20px.svg);
             background-size: 20px;
@@ -129,12 +132,12 @@
         }
 
         .inner-icon-end {
-            background: url({{url('/')}}/images/new/call-20px.svg);
+            background: url({{url('/')}}/images/new/contact-20px.svg);
             background-size: 20px;
         }
 
         .inner-icon-end:hover {
-            background: url({{url('/')}}/images/new/call-hover-20px.svg);
+            background: url({{url('/')}}/images/new/contact-hover-20px.svg);
             background-size: 20px;
         }
 
@@ -229,7 +232,10 @@
     margin: 0;
     padding: 16px 28px;
 ">ДЕЛА</span>
-    <div class="navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-collapse" id="navbarNavAltMarkup" style="    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;">
         <div class="navbar-nav" style="
     height: 100%;
     padding:  13px 5px;

@@ -51,15 +51,39 @@ class NotificationController extends Controller
      */
     public function getAllUserNotifications($userId)
     {
+        $response = [];
         if ($userId == 0) {
             return $this->prepareReturn('_empty_user_id', 'error');
         }
         $notifications = Notifications::where([['user_id', '=', $userId]])->get();
-        $response = $notifications->toArray();
-        if (empty($response)) {
+        if (empty($notifications->toArray())) {
             return $this->prepareReturn('_empty_notifications', 'error');
         }
+        foreach ($notifications->toArray() as $item) {
+
+            $taskApiController = new TaskController();
+            $response[] = [
+                'notification' => $item,
+                'task' => $taskApiController->get($item['task_id'])->getData(true)['data'],
+            ];
+        }
         return $this->prepareReturn($response);
+    }
+
+    public function removeTaskNotification($taskId = 0)
+    {
+        if ($taskId == 0) {
+            return $this->prepareReturn('_empty_task_id', 'error');
+        }
+        $notifications = Notifications::where([['task_id', '=', $taskId], ['status', '=', '0']])->get();
+        if (empty($notifications->toArray())) {
+            return $this->prepareReturn('_empty_notifications', 'error');
+        }
+        foreach ($notifications as $notification) {
+            $notification->delete();
+        }
+
+        return $this->prepareReturn(['ok']);
     }
 
     /**

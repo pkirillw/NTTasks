@@ -163,6 +163,29 @@ function renderBoard(tasks) {
     $('#pipeline2_count_task').text('0');
     $('#pipeline3_count_task').text('0');
     $('#pipeline4_count_task').text('0');
+    var counters = {
+        pipeline1: {
+            success: 0,
+            danger: 0,
+            warning: 0
+        },
+        pipeline2: {
+            success: 0,
+            danger: 0,
+            warning: 0
+        },
+        pipeline3: {
+            success: 0,
+            danger: 0,
+            warning: 0
+        },
+        pipeline4: {
+            success: 0,
+            danger: 0,
+            warning: 0
+        },
+
+    }
     $.each(tasks, function (index, value) {
         var htmlData = '<div class="card task border_' + value.type + '" id="task' + value.id + '"\n' +
             '                                     draggable="true">\n' +
@@ -246,8 +269,26 @@ function renderBoard(tasks) {
         htmlData = htmlData + '                                    <div id="commentBlock"></div></div>\n' +
             '                                </div>\n';
         $('#pipeline' + value.pipeline_id).append(htmlData);
+        counters['pipeline' + value.pipeline_id][value.type] = counters['pipeline' + value.pipeline_id][value.type] + 1;
+
         $('#pipeline' + value.pipeline_id + '_count_task').text(parseInt($('#pipeline' + value.pipeline_id + '_count_task').text()) + 1);
     });
+    $('#pipeline1_count_task').html('' +
+        '<span class="color_warning">' + counters.pipeline1.warning + '</span>/' +
+        '<span class="color_success">' + counters.pipeline1.success + '</span>/' +
+        '<span class="color_danger">' + counters.pipeline1.danger + '</span>');
+    $('#pipeline2_count_task').html('' +
+        '<span class="color_warning">' + counters.pipeline2.warning + '</span>/' +
+        '<span class="color_success">' + counters.pipeline2.success + '</span>/' +
+        '<span class="color_danger">' + counters.pipeline2.danger + '</span>');
+    $('#pipeline3_count_task').html('' +
+        '<span class="color_warning">' + counters.pipeline3.warning + '</span>/' +
+        '<span class="color_success">' + counters.pipeline3.success + '</span>/' +
+        '<span class="color_danger">' + counters.pipeline3.danger + '</span>');
+    $('#pipeline4_count_task').html('' +
+        '<span class="color_warning">' + counters.pipeline4.warning + '</span>/' +
+        '<span class="color_success">' + counters.pipeline4.success + '</span>/' +
+        '<span class="color_danger">' + counters.pipeline4.danger + '</span>');
     draggableInit();
 
 }
@@ -381,10 +422,13 @@ function addTaskModal() {
     $('#addTask_url2').val('');
     $('#addTask_comment').val('');
     $("body").removeClass("blur");
+    $('#addTask_notification').prop('checked', false);
     $('#overlay').hide();
 }
 
 function editTaskModal(id) {
+    $('#edit_notification').prop('checked', false);
+    $('#edit_notification_text').html('');
     $.ajax({
         type: 'GET',
         url: apiServer + 'tasks/get/' + id,
@@ -415,8 +459,9 @@ function editTaskModal(id) {
         type: 'GET',
         url: apiServer + 'notifications/getTaskNotifications/' + id,
     }).done(function (data) {
-        if (data.status != 'error') {
-            $('#edit_notification').prop('checked', 'true');
+        if (data.status !== 'error') {
+            console.log(data);
+            $('#edit_notification').prop('checked', true);
             $('#edit_notification_text').html('(' + timeConverter(data.data[0].calltime) + ')');
         }
     });
@@ -471,6 +516,8 @@ function additionalInfo(amoId) {
 }
 
 function miniEditModal(id) {
+    $('#miniEdit_notification').prop('checked', false);
+    $('#miniEdit_notification_text').html('');
     $('#miniEdit_comment').val('');
     $.ajax({
         type: 'GET',
@@ -496,7 +543,7 @@ function miniEditModal(id) {
     }).done(function (data) {
         if (data.status != 'error') {
             if (data.status != 'error') {
-                $('#miniEdit_notification').prop('checked', 'true');
+                $('#miniEdit_notification').prop('checked', true);
                 $('#miniEdit_notification_text').html('(' + timeConverter(data.data[0].calltime) + ')');
             }
         }
@@ -528,11 +575,11 @@ function showNotificationModal() {
             var index_active = 1;
             var index_expired = 1;
             $.each(data.data, function (index, value) {
-                if (value.status == 0) {
+                if (value.notification.status == 0) {
                     var selectedTable = 'active';
                     var counter = index_active;
                     index_active = index_active + 1;
-                    if (value.calltime < Math.floor(Date.now() / 1000)) {
+                    if (value.notification.calltime < Math.floor(Date.now() / 1000)) {
                         var status = 'Ожидает прочтения';
                     } else {
                         var status = 'Ожидает отправки';
@@ -543,28 +590,14 @@ function showNotificationModal() {
                     var status = 'Отправлено';
                     index_expired = index_expired + 1;
                 }
-                $.ajax({
-                    type: 'GET',
-                    url: apiServer + 'tasks/get/' + value.task_id,
-                }).done(function (data) {
-                    if (data.status == 'error') {
-                        console.log(data);
-                        $('#alert-danger').text('Ошибка при получении данных о задаче');
-                        $('#alert-danger').fadeIn();
-                        setTimeout(function () {
-                            $('#alert-danger').fadeOut();
-                        }, 2000);
-                    } else {
-                        htmlData =
-                            '<tr>' +
-                            '   <td>' + counter + '</td>' +
-                            '   <td>' + data.data.number_request + ', ' + data.data.name.type_name + '</td>' +
-                            '   <td>' + status + '</td>' +
-                            '   <td>' + timeConverter(value.calltime) + '</td>' +
-                            '</tr>';
-                        $('#notification_modal_' + selectedTable + '_body').append(htmlData);
-                    }
-                });
+                htmlData =
+                    '<tr>' +
+                    '   <td>' + counter + '</td>' +
+                    '   <td>' + value.task.number_request + ', ' + value.task.name.type_name + '</td>' +
+                    '   <td>' + status + '</td>' +
+                    '   <td>' + timeConverter(value.notification.calltime) + '</td>' +
+                    '</tr>';
+                $('#notification_modal_' + selectedTable + '_body').append(htmlData);
             });
             $('#notificationModal').modal('show');
         }

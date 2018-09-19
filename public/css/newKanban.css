@@ -25,6 +25,14 @@
     font-size: 28px;
 }
 
+#addCommentButton {
+    width: 160px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+#addCommentButton:hover {
+    background: #ddd;
+}
 .blur {
     -webkit-filter: blur(2px);
     -moz-filter: blur(2px);

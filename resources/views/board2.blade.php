@@ -278,6 +278,53 @@
     height: 100%;
 
     ">
+            <div class="input-group">
+                <input type="text" id="search" onclick="openAdditionalMenuSearch()" class="form-control">
+                <div class="dropdown dropdown-lg">
+                    <div class="dropdown-menu dropdown-menu-left" role="menu">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="filter">Группа</label>
+                                <select class="form-control">
+                                    <option value="0" selected>Не учитывать</option>
+                                    <option value="1">1011</option>
+                                    <option value="2">1021</option>
+                                    <option value="3">1031</option>
+                                    <option value="4">1041</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter">Преподаватель</label>
+                                <select class="form-control">
+                                    <option value="0" selected>Не учитывать</option>
+                                    <option value="1">Иванова А.А</option>
+                                    <option value="2">Сидорова Б.Б</option>
+                                    <option value="3">Петрова В.В</option>
+                                    <option value="4">Павлова Г.Г</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter">Кабинет</label>
+                                <select class="form-control">
+                                    <option value="0" selected>Не учитывать</option>
+                                    <option value="1">101</option>
+                                    <option value="2">102</option>
+                                    <option value="3">103</option>
+                                    <option value="4">104</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" style="width: 100%;"><span
+                                            class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <span class="input-group-btn">
+                    <button class="btn btn-warning" type="button">Классы/Загруженность классов</button>
+                </span>
+            </div>
             <div class="input-group mb-3" style="
     width: -webkit-fill-available;
     margin: inherit !important;
@@ -415,13 +462,14 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Время окончания задачи</label>
                         <div class="input-group mb-3">
-                            <input name="complite_till" type='text' id='datetimepicker1' class="form-control"
+                            <input name="complite_till" type='text' onchange="checkTime('datetimepicker1')" id='datetimepicker1' class="form-control"
                                    aria-describedby="basic-addon2" value="{{date('d.m.Y H:i')}}">
                             <div class="input-group-append" onclick="$('#datetimepicker1').datetimepicker('show');">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
                                                                                       src="{{url('/')}}/images/new/calendar-20px.svg"></span>
                             </div>
                         </div>
+                        <span id="datetimepicker1_text" style="display: none"></span>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="addTask_notification">
@@ -466,7 +514,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Время окончания задачи</label>
                         <div class="input-group mb-3">
-                            <input name="complite_till" type='text' id='datetimepicker2' class="form-control"
+                            <input name="complite_till" type='text' onchange="checkTime('datetimepicker2')" id='datetimepicker2' class="form-control"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append" onclick="$('#datetimepicker2').datetimepicker('show');">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
@@ -474,6 +522,7 @@
                             </div>
                         </div>
                     </div>
+                    <span id="datetimepicker2_text" style="display: none"></span>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="edit_notification">
                         <label class="form-check-label" for="edit_notification">
@@ -678,7 +727,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Время окончания задачи</label>
                     <div class="input-group mb-3">
-                        <input name="complite_till" type='text' id='datetimepicker3' class="form-control"
+                        <input name="complite_till" type='text' onchange="checkTime('datetimepicker3')" id='datetimepicker3' class="form-control"
                                aria-describedby="basic-addon2">
                         <div class="input-group-append" onclick="$('#datetimepicker3').datetimepicker('show');">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
@@ -686,6 +735,7 @@
                         </div>
                     </div>
                 </div>
+                <span id="datetimepicker3_text" style="display: none"></span>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="miniEdit_notification">
                     <label class="form-check-label" for="miniEdit_notification">

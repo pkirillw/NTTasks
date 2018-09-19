@@ -33,6 +33,7 @@ Route::group([
         Route::post('add', 'TaskController@add');
         Route::post('update', 'TaskController@update');
         Route::post('miniEdit', 'TaskController@miniEdit');
+        Route::post('checkTime', 'TaskController@checkTime');
     });
 
     Route::group([

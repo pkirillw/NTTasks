@@ -317,6 +317,38 @@ class TaskController extends Controller
         return $this->prepareReturn($task->toArray());
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function checkTime(Request $request)
+    {
+        if (empty($request)) {
+            return $this->prepareReturn('_empty_request', 'error');
+        }
+        $time = \DateTime::createFromFormat('d.m.Y H:i', $request->time)->format('U');
+        $nextTime = $time;
+        $oldTime = $time;
+        $task = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $time]])->first();
+        $tempTask = $task;
+        while (!empty($task)) {
+            $nextTime = $nextTime + 60 * 15;
+            $task = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $nextTime]])->first();
+        }
+
+        while (!empty($tempTask)) {
+            $oldTime = $oldTime - 60 * 15;
+            $tempTask = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $oldTime]])->first();
+        }
+        if ($nextTime != $oldTime) {
+            return $this->prepareReturn([
+                'nextTime' => date('d.m.Y H:i', $nextTime),
+                'oldTime' => date('d.m.Y H:i', $oldTime)
+            ]);
+        } else {
+            return $this->prepareReturn(['time' => date('d.m.Y H:i', $time)]);
+        }
+    }
 
     /**
      * @param int $taskId

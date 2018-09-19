@@ -4,8 +4,11 @@ var path = 'https://mail-nt-rt.ru/NTTasks/public/';
 var path = 'https://tasks.pkirillw.ru/public/';*/
 var userId = $('meta[name="user_id"]').attr('content');
 var mode = 'all';
+var flagShowDropdown = false;
 
 $(function () {
+
+
     $('body').after($('#overlay'));
     var userId = $('meta[name="user_id"]').attr('content');
     $.ajax({
@@ -188,8 +191,8 @@ function renderBoard(tasks) {
     }
     $.each(tasks, function (index, value) {
         var htmlData = '<div class="card task border_' + value.type + '" id="task' + value.id + '"\n' +
-            '                                     draggable="true">\n' +
-            '                                    <div class="card-header row" style="\n';
+            '                                    draggable="true">\n' +
+            '                                    <div class="card-header row" onclick="showBody(event,' + value.id + ')" style="\n';
         if (value.flag_expired) {
             htmlData = htmlData + 'background: #f9e4e4;\n';
         } else {
@@ -213,59 +216,47 @@ function renderBoard(tasks) {
             htmlData = htmlData + '<img src="' + path + '/images/new/expired-20px.svg" width="18px" style="">';
         }
 
-        htmlData = htmlData + '<span onclick="miniEditModal(' + value.id + ');">' + timeConverter(value.complite_till) + '</span>' +
-            '                                        </h6></div>\n' +
+        htmlData = htmlData + '<span class="datetask" onclick="miniEditModal(event,' + value.id + ');">' + timeConverter(value.complite_till) + '</span>' +
+            '                                        </h6>';
+        if ((value.url1 != '') || (value.url2 != '')) {
+            htmlData = htmlData + '<div id="bodyLinks" style="display: none;font-size: 12px;">\n';
+            if (value.url1 != '') {
+                htmlData = htmlData + '<a data-toggle="tooltip" data-placement="top"\n' +
+                    'href="' + value.url1 + '" target="_blank" title="' + value.url1 + '">' + value.url1 + '</a>';
+            }
+            if (value.url2 != '') {
+                htmlData = htmlData + '<br><a data-toggle="tooltip" data-placement="top"\n' +
+                    'href="' + value.url2 + '" target="_blank" title="' + value.url2 + '">' + value.url2 + '</a>';
+            }
+
+            htmlData = htmlData + '</div>\n';
+        }
+        htmlData = htmlData + '</div>\n' +
             '                                        <div class="col-sm-2" style="padding: 0;">\n' +
             '                                            <div class="buttons" style="float: right;\n' +
             '    margin: 5px auto 5px;\n' +
             '    width: 20px;">\n' +
             '                                                <span class="inner-icon inner-icon-edit" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="editTaskModal(' + value.id + ')"\n' +
+            '                                                      data-placement="top" onclick="editTaskModal(event,' + value.id + ')"\n' +
             '                                                      title="Изменить задачу">\n' +
             '                                                </span>\n' +
             '                                                <span class="inner-icon inner-icon-more" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="showBody(' + value.id + ')" \n' +
+            '                                                      data-placement="top" \n' +
             '                                                      title="Развернуть">\n' +
             '                                                </span>\n' +
             '                                                <span class="inner-icon inner-icon-done"  style="display: none;" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="endTaskModal(' + value.id + ')"\n' +
+            '                                                      data-placement="top" onclick="endTaskModal(event,' + value.id + ')"\n' +
             '                                                      title="Завершить задачу">\n' +
             '                                                </span>\n' +
             '                                                <span class="inner-icon inner-icon-end" style="display: none;" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="additionalInfo(' + value.amo_id + ')"\n' +
+            '                                                      data-placement="top" onclick="additionalInfo(event,' + value.amo_id + ')"\n' +
             '                                                      title="Информация о поставщиках">\n' +
             '                                                </span>\n' +
             '                                            </div>\n' +
             '                                        </div>\n';
 
         htmlData = htmlData + '                                    </div>\n' +
-            '                                    <div class="card-body" style="padding: 5px 15px; display: none;">\n';
-        if ((value.url1 != '') || (value.url2 != '')) {
-            htmlData = htmlData + '                                            <div class="row" style="margin-bottom: 10px;">\n' +
-                '                                                <div class="col-sm">\n' +
-                '                                                    <a data-toggle="tooltip" data-placement="top"\n' +
-                '                                                       href="' + value.url1 + '" target="_blank" title="' + value.url1 + '"\n' +
-                '                                                       class="btn btn-secondary btn-sm ';
-            if (value.url1 == '') {
-                htmlData = htmlData + 'disabled';
-            }
-            htmlData = htmlData + '"                                                       style="float: right;width: 90%;">\n' +
-                '                                                        Ссылка #1\n' +
-                '                                                    </a>\n' +
-                '                                                </div>\n' +
-                '                                                <div class="col-sm">\n' +
-                '                                                    <a data-toggle="tooltip" data-placement="top"\n' +
-                '                                                       href="' + value.url2 + '" target="_blank" title="' + value.url2 + '"\n' +
-                '                                                       class="btn btn-secondary btn-sm ';
-            if (value.url2 == '') {
-                htmlData = htmlData + 'disabled';
-            }
-            htmlData = htmlData + '"                                                       style="float: left; width: 90%;">\n' +
-                '                                                        Ссылка #2\n' +
-                '                                                    </a>\n' +
-                '                                                </div>\n' +
-                '                                            </div>\n';
-        }
+            '                                    <div class="card-body" data-open="false"  style="padding: 5px 5px; display: none;">\n';
         htmlData = htmlData + '                                    <div id="commentBlock"></div></div>\n' +
             '                                </div>\n';
         $('#pipeline' + value.pipeline_id).append(htmlData);
@@ -351,10 +342,18 @@ function draggableInit() {
     });
 }
 
-function showBody(id) {
+function showBody(event, id) {
+    if (event.target.className == 'datetask' || event.target.className == 'inner-icon inner-icon-end'
+        || event.target.className == 'inner-icon inner-icon-done' || event.target.className == 'inner-icon inner-icon-edit'
+        || event.target.className == 'color_success' || event.target.className == 'color_danger'
+        || event.target.className == 'color_warning') {
+        return;
+    }
     var $panelBody = $('#task' + id).children('.card-body');
     $('#task' + id).children('.card-header').children('.col-sm-2').children('.buttons').children('.inner-icon-done').slideToggle();
     $('#task' + id).children('.card-header').children('.col-sm-2').children('.buttons').children('.inner-icon-end').slideToggle();
+    $('#task' + id).children('.card-header').children('.col-sm-10').children('#bodyLinks').slideToggle();
+    $panelBody.attr('data-open', $($panelBody).is(":hidden"));
     if ($($panelBody).is(":hidden")) {
         renderComment(id);
     }
@@ -409,6 +408,45 @@ function setIntervalMenu() {
     $('#setIntervalMenuModal').modal('hide');
 }
 
+function checkTime(elementTag) {
+    $('#' + elementTag + '_text').html('');
+    $('#' + elementTag + '_text').hide();
+    var dataOutput = {
+        user_id: $('meta[name="user_id"]').attr('content'),
+        time: $('#' + elementTag).val(),
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: apiServer + 'tasks/checkTime',
+        data: dataOutput,
+    }).done(function (data) {
+        if (data.status == 'error') {
+            $('#alert-danger').text('Ошибка при редактировании задачи');
+            $('#alert-danger').fadeIn();
+            setTimeout(function () {
+                $('#alert-danger').fadeOut();
+            }, 2000);
+        } else {
+            if (data.data.time == undefined) {
+                $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> ' + data.data.oldTime + '<br>' + data.data.nextTime);
+                $('#' + elementTag + '_text').show();
+            }
+        }
+    });
+}
+
+function openAdditionalMenuSearch() {
+    if (flagShowDropdown) {
+        $(".dropdown").removeClass('open');
+        flagShowDropdown = false;
+    } else {
+        $(".dropdown").addClass('open');
+        flagShowDropdown = true;
+    }
+    return false;
+}
+
 // Modals
 function addTaskModal() {
     $('#lead_select').hide();
@@ -426,7 +464,8 @@ function addTaskModal() {
     $('#overlay').hide();
 }
 
-function editTaskModal(id) {
+function editTaskModal(event, id) {
+    event.preventDefault();
     $('#edit_notification').prop('checked', false);
     $('#edit_notification_text').html('');
     $.ajax({
@@ -467,7 +506,7 @@ function editTaskModal(id) {
     });
 }
 
-function endTaskModal(id) {
+function endTaskModal(event, id) {
     $.ajax({
         type: 'GET',
         url: apiServer + 'tasks/get/' + id,
@@ -488,7 +527,7 @@ function endTaskModal(id) {
     $('#endTask').modal('show');
 }
 
-function additionalInfo(amoId) {
+function additionalInfo(event, amoId) {
     $('#additionalInfo').modal('show');
     $('#info_nameCompany').text('Загрузка...');
     $('#info_nameContact').text('Загрузка...');
@@ -515,7 +554,7 @@ function additionalInfo(amoId) {
     });
 }
 
-function miniEditModal(id) {
+function miniEditModal(event, id) {
     $('#miniEdit_notification').prop('checked', false);
     $('#miniEdit_notification_text').html('');
     $('#miniEdit_comment').val('');
@@ -794,7 +833,7 @@ function renderComment(id) {
             $('#loaderComment').hide();
             $("#innerLoaderComment").width('0%');
         }, 500);
-        var html_data = '<p style="\n' +
+        var html_data = '<p id="addCommentButton" style="\n' +
             '    font-size: 12px;\n' +
             '    margin-bottom: 2.5px;\n' +
             '    padding-bottom: 2.5px;\n' +
@@ -807,19 +846,25 @@ function renderComment(id) {
         if (data.status == 'success') {
             $.each(data.data, function (index, value) {
                 html_data = html_data + '' +
-                    '<p style="\n' +
+                    '<div style="\n' +
                     '    font-size: 12px;\n' +
-                    '    margin-top: 2.5px;\n' +
-                    '    padding-top: 2.5px;\n' +
+                    '    margin-top: 3.5px;\n' +
+                    '    padding-top: 0.5px;\n' +
                     '    margin-bottom: 0;\n' +
-                    '    border-top: 1px solid #eee;\n' +
+                    '    border-radius: 15px;\n' +
+                    '    border-top-right-radius: unset;\n' +
+                    '    background: #eee;\n' +
                     '"> ' +
                     '<span class="commentDate" style="\n' +
                     '    padding: 0px 5px 0 0;\n' +
-                    '    margin-right: 5px;\n' +
-                    '    border-right: 1px solid #bbb;\n' +
-                    '">' + value.created_at + '</span>' + value.text +
-                    '</p>'
+                    '    float: right;\n' +
+                    '    font-weight: 700;\n' +
+                    '">' + value.created_at + '</span>'
+                    + '<p style="\n' +
+                    '    padding: 0px 10px 2px;\n' +
+                    '    margin-bottom: 0.25px;\n' +
+                    '">' + value.text + '</p>' +
+                    '</div>'
             });
             $panelBody.html(html_data);
         }

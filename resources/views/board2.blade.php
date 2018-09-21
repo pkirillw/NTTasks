@@ -278,53 +278,6 @@
     height: 100%;
 
     ">
-            <div class="input-group">
-                <input type="text" id="search" onclick="openAdditionalMenuSearch()" class="form-control">
-                <div class="dropdown dropdown-lg">
-                    <div class="dropdown-menu dropdown-menu-left" role="menu">
-                        <form class="form-horizontal" role="form">
-                            <div class="form-group">
-                                <label for="filter">Группа</label>
-                                <select class="form-control">
-                                    <option value="0" selected>Не учитывать</option>
-                                    <option value="1">1011</option>
-                                    <option value="2">1021</option>
-                                    <option value="3">1031</option>
-                                    <option value="4">1041</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="filter">Преподаватель</label>
-                                <select class="form-control">
-                                    <option value="0" selected>Не учитывать</option>
-                                    <option value="1">Иванова А.А</option>
-                                    <option value="2">Сидорова Б.Б</option>
-                                    <option value="3">Петрова В.В</option>
-                                    <option value="4">Павлова Г.Г</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="filter">Кабинет</label>
-                                <select class="form-control">
-                                    <option value="0" selected>Не учитывать</option>
-                                    <option value="1">101</option>
-                                    <option value="2">102</option>
-                                    <option value="3">103</option>
-                                    <option value="4">104</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary" style="width: 100%;"><span
-                                            class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-                <span class="input-group-btn">
-                    <button class="btn btn-warning" type="button">Классы/Загруженность классов</button>
-                </span>
-            </div>
             <div class="input-group mb-3" style="
     width: -webkit-fill-available;
     margin: inherit !important;
@@ -357,7 +310,7 @@
     color: #666;
     font-weight: 400;
     line-height: 20px;
-"><span id="pipeline{{$pipeline['id']}}_count_task">0</span> задач</span>
+"><span id="pipeline{{$pipeline['id']}}_count_task" >0</span> задач</span>
                     </div>
                     <div class="pipeline-body" id="pipeline{{$pipeline['id']}}">
 
@@ -724,7 +677,7 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" name="task_id" value="" id="miniEdit_taskId">
-                <div class="form-group">
+                <div class="form-group" style="width: 308px;">
                     <label for="exampleInputEmail1">Время окончания задачи</label>
                     <div class="input-group mb-3">
                         <input name="complite_till" type='text' onchange="checkTime('datetimepicker3')" id='datetimepicker3' class="form-control"

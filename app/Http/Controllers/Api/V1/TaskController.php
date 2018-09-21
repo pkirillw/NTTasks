@@ -332,12 +332,12 @@ class TaskController extends Controller
         $task = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $time]])->first();
         $tempTask = $task;
         while (!empty($task)) {
-            $nextTime = $nextTime + 60 * 15;
+            $nextTime = $nextTime + 60 * 10;
             $task = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $nextTime]])->first();
         }
 
         while (!empty($tempTask)) {
-            $oldTime = $oldTime - 60 * 15;
+            $oldTime = $oldTime - 60 * 10;
             $tempTask = Tasks::where([['user_id', '=', $request->user_id], ['complite_till', '=', $oldTime]])->first();
         }
         if ($nextTime != $oldTime) {

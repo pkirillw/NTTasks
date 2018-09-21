@@ -28,7 +28,7 @@ $(function () {
         lang: 'ru',
         format: 'd.m.Y H:i',
         dayOfWeekStart: 1,
-        step: 15
+        step: 10
     });
     $('#datetimepicker2').datetimepicker({
         lang: 'ru',
@@ -42,7 +42,7 @@ $(function () {
         },
         format: 'd.m.Y H:i',
         dayOfWeekStart: 1,
-        step: 15
+        step: 10
     });
     $('#datetimepicker3').datetimepicker({
         lang: 'ru',
@@ -56,7 +56,7 @@ $(function () {
         },
         format: 'd.m.Y H:i',
         dayOfWeekStart: 1,
-        step: 15
+        step: 10
     });
     $('#datetimepicker4').datetimepicker({
         lang: 'ru',
@@ -70,7 +70,7 @@ $(function () {
         },
         format: 'd.m.Y H:i',
         dayOfWeekStart: 1,
-        step: 15
+        step: 10
     });
     $('#datetimepicker5').datetimepicker({
         lang: 'ru',
@@ -84,7 +84,7 @@ $(function () {
         },
         format: 'd.m.Y H:i',
         dayOfWeekStart: 1,
-        step: 15
+        step: 10
     });
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -280,6 +280,19 @@ function renderBoard(tasks) {
         '<span class="color_warning">' + counters.pipeline4.warning + '</span>/' +
         '<span class="color_success">' + counters.pipeline4.success + '</span>/' +
         '<span class="color_danger">' + counters.pipeline4.danger + '</span>');
+
+    $('#pipeline1_count_task').tooltip({
+        title: counters.pipeline1.warning + ' важных / ' + counters.pipeline1.success + ' средних / ' + counters.pipeline1.danger + ' низких'
+    })
+    $('#pipeline2_count_task').tooltip({
+        title: counters.pipeline2.warning + ' важных / ' + counters.pipeline2.success + ' средних / ' + counters.pipeline2.danger + ' низких'
+    })
+    $('#pipeline3_count_task').tooltip({
+        title: counters.pipeline3.warning + ' важных / ' + counters.pipeline3.success + ' средних / ' + counters.pipeline3.danger + ' низких'
+    })
+    $('#pipeline4_count_task').tooltip({
+        title: counters.pipeline4.warning + ' важных / ' + counters.pipeline4.success + ' средних / ' + counters.pipeline4.danger + ' низких'
+    });
     draggableInit();
 
 }
@@ -429,11 +442,19 @@ function checkTime(elementTag) {
             }, 2000);
         } else {
             if (data.data.time == undefined) {
-                $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> ' + data.data.oldTime + '<br>' + data.data.nextTime);
+                $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> <span onclick="setTime(\'' + elementTag + '\',\'' + data.data.oldTime + '\')">' + data.data.oldTime + '</span>'+
+                '<br>' + '<span onclick="setTime(\'' + elementTag + '\',\'' + data.data.nextTime + '\')">' + data.data.nextTime + '</span>'
+            )
+                ;
                 $('#' + elementTag + '_text').show();
             }
         }
     });
+}
+
+function setTime(elementTag, time) {
+    $('#' + elementTag).val(time);
+    $('#' + elementTag).trigger('change');
 }
 
 function openAdditionalMenuSearch() {

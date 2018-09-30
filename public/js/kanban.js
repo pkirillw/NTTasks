@@ -1,19 +1,28 @@
-var apiServer = 'https://mail-nt-rt.ru/NTTasks/public/api/v1/';
-var path = 'https://mail-nt-rt.ru/NTTasks/public/';
-/*var apiServer = 'https://tasks.pkirillw.ru/api/v1/';
-var path = 'https://tasks.pkirillw.ru/public/';*/
 var userId = $('meta[name="user_id"]').attr('content');
 var mode = 'all';
 var flagShowDropdown = false;
 
+var settings = {
+    urls: {
+        api: 'https://mail-nt-rt.ru/NTTasks/public/api/v1/',
+        assets: 'https://mail-nt-rt.ru/NTTasks/public/'
+        // api: 'https://tasks.pkirillw.ru/public/api/v1/',
+        // assets: 'https://tasks.pkirillw.ru/public/'
+    },
+    mode: 'all',
+    templates: {
+        tasks: 'twigs/board/tasks.twig',
+        comments: 'twigs/board/comments.twig',
+    }
+};
 $(function () {
-
+    initTemplates();
 
     $('body').after($('#overlay'));
     var userId = $('meta[name="user_id"]').attr('content');
     $.ajax({
         type: "GET",
-        url: apiServer + "tasks/getUserTasks/" + userId + '/' + mode,
+        url: settings.urls.api + "tasks/getUserTasks/" + userId + '/' + mode,
     }).done(function (data) {
         if ((data.status == 'error') && (data.error_data.id == 4)) {
             $("body").addClass("blur");
@@ -116,7 +125,7 @@ $(function () {
         var timerId;
         $.ajax({
             type: "GET",
-            url: apiServer + "amocrm/getLeads/" + $("#name_lead").val(),
+            url: settings.urls.api + "amocrm/getLeads/" + $("#name_lead").val(),
             beforeSend: function () {
                 $('#lead_select').prop('disabled', 'disabled');
                 $('#lead_select').hide();
@@ -158,6 +167,16 @@ $(function () {
  **/
 
 // Helper
+function initTemplates() {
+    $.each(settings.templates, function (index, value) {
+        Twig.twig({
+            id: index,
+            href: settings.urls.assets + value,
+            async: false
+        });
+    });
+}
+
 function renderBoard(tasks) {
     $('[draggable=true]').unbind();
     $('.pipeline-body').unbind();
@@ -190,77 +209,11 @@ function renderBoard(tasks) {
 
     }
     $.each(tasks, function (index, value) {
-        var htmlData = '<div class="card task border_' + value.type + '" id="task' + value.id + '"\n' +
-            '                                    draggable="true">\n' +
-            '                                    <div class="card-header row" onclick="showBody(event,' + value.id + ')" style="\n';
-        if (value.flag_expired) {
-            htmlData = htmlData + 'background: #f9e4e4;\n';
-        } else {
-            htmlData = htmlData + 'background: #fff;\n';
-        }
-        htmlData = htmlData +
-            '                                            border-bottom: 0px;\n' +
-            '                                            padding: 5px 5px 0;\n' +
-            '                                            margin-right: 0;\n' +
-            '                                            margin-left: 0;' +
-            '                                            ">\n' +
-            '              <div class="col-sm-10" style="padding: 0;">' +
-            '<h5 class="card-title"><a\n' +
-            '                                                    class="color_' + value.type + '"\n' +
-            '                                                    href="https://novyetechnologii.amocrm.ru/leads/detail/' + value.amo_id + '"\n' +
-            '                                                    target="_blank">' + value.name.name + '\n' +
-            '                                                <br>' + value.name.type_name + '</a>\n' +
-            '                                        </h5>\n' +
-            '                                        <h6 class="card-subtitle mb-2 text-muted">\n';
-        if (value.flag_expired) {
-            htmlData = htmlData + '<img src="' + path + '/images/new/expired-20px.svg" width="18px" style="">';
-        }
-
-        htmlData = htmlData + '<span class="datetask" onclick="miniEditModal(event,' + value.id + ');">' + timeConverter(value.complite_till) + '</span>' +
-            '                                        </h6>';
-        if ((value.url1 != '') || (value.url2 != '')) {
-            htmlData = htmlData + '<div id="bodyLinks" style="display: none;font-size: 12px;">\n';
-            if (value.url1 != '') {
-                htmlData = htmlData + '<a data-toggle="tooltip" data-placement="top"\n' +
-                    'href="' + value.url1 + '" target="_blank" title="' + value.url1 + '">' + value.url1 + '</a>';
-            }
-            if (value.url2 != '') {
-                htmlData = htmlData + '<br><a data-toggle="tooltip" data-placement="top"\n' +
-                    'href="' + value.url2 + '" target="_blank" title="' + value.url2 + '">' + value.url2 + '</a>';
-            }
-
-            htmlData = htmlData + '</div>\n';
-        }
-        htmlData = htmlData + '</div>\n' +
-            '                                        <div class="col-sm-2" style="padding: 0;">\n' +
-            '                                            <div class="buttons" style="float: right;\n' +
-            '    margin: 5px auto 5px;\n' +
-            '    width: 20px;">\n' +
-            '                                                <span class="inner-icon inner-icon-edit" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="editTaskModal(event,' + value.id + ')"\n' +
-            '                                                      title="Изменить задачу">\n' +
-            '                                                </span>\n' +
-            '                                                <span class="inner-icon inner-icon-more" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" \n' +
-            '                                                      title="Развернуть">\n' +
-            '                                                </span>\n' +
-            '                                                <span class="inner-icon inner-icon-done"  style="display: none;" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="endTaskModal(event,' + value.id + ')"\n' +
-            '                                                      title="Завершить задачу">\n' +
-            '                                                </span>\n' +
-            '                                                <span class="inner-icon inner-icon-end" style="display: none;" data-toggle="tooltip"\n' +
-            '                                                      data-placement="top" onclick="additionalInfo(event,' + value.amo_id + ')"\n' +
-            '                                                      title="Информация о поставщиках">\n' +
-            '                                                </span>\n' +
-            '                                            </div>\n' +
-            '                                        </div>\n';
-
-        htmlData = htmlData + '                                    </div>\n' +
-            '                                    <div class="card-body" data-open="false"  style="padding: 5px 5px; display: none;">\n';
-        htmlData = htmlData + '                                    <div id="commentBlock"></div></div>\n' +
-            '                                </div>\n';
-        $('#pipeline' + value.pipeline_id).append(htmlData);
-        counters['pipeline' + value.pipeline_id][value.type] = counters['pipeline' + value.pipeline_id][value.type] + 1;
+        var preparedTask = value;
+        preparedTask.complite_till_format = timeConverter(value.complite_till);
+        var taskHTML = Twig.twig({ref: "tasks"}).render({task: preparedTask, settings: settings});
+        $('#pipeline' + preparedTask.pipeline_id).append(taskHTML);
+        counters['pipeline' + preparedTask.pipeline_id][preparedTask.type] = counters['pipeline' + preparedTask.pipeline_id][preparedTask.type] + 1;
 
         $('#pipeline' + value.pipeline_id + '_count_task').text(parseInt($('#pipeline' + value.pipeline_id + '_count_task').text()) + 1);
     });
@@ -301,15 +254,20 @@ function draggableInit() {
     var sourceId;
 
     $('[draggable=true]').bind('dragstart', function (event) {
-        sourceId = $(this).parent().attr('id');
-        event.originalEvent.dataTransfer.setData("text/plain", event.target.getAttribute('id'));
+        // console.log(event);
+        sourceId = $(this).parent().parent().attr('id');
+        console.log($('#' + event.target.getAttribute('id')).parent().attr('id'));
+        event.originalEvent.dataTransfer.setData("text/plain", $('#' + event.target.getAttribute('id')).parent().attr('id'));
     });
 
     $('.pipeline-body').bind('dragover', function (event) {
+        // console.log(event);
+        // console.log(event.originalEvent.dataTransfer.getData("text/plain"));
         event.preventDefault();
     });
 
     $('.pipeline-body').bind('drop', function (event) {
+        // console.log(event);
         var children = $(this);
         var targetId = children.attr('id');
 
@@ -322,7 +280,7 @@ function draggableInit() {
             // Post data
             $.ajax({
                 type: "POST",
-                url: apiServer + "tasks/updatePipeline",
+                url: settings.urls.api + "tasks/updatePipeline",
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     taskId: elementId.replace(/[^\d;]/g, ''),
@@ -338,8 +296,7 @@ function draggableInit() {
                         $('#alert-danger').fadeOut();
                     }, 900);
                 } else {
-                    $('#' + sourceId + '_count_task').text(parseInt($('#' + sourceId + '_count_task').text()) - 1);
-                    $('#' + targetId + '_count_task').text(parseInt($('#' + targetId + '_count_task').text()) + 1);
+                    changeMode(mode);
                     $('#alert-success').text('Задача перенесена');
                     $('#alert-success').fadeIn();
                     setTimeout(function () {
@@ -403,7 +360,7 @@ function changeMode(inputMode) {
     var userId = $('meta[name="user_id"]').attr('content');
     $.ajax({
         type: "GET",
-        url: apiServer + "tasks/getUserTasks/" + userId + '/' + mode,
+        url: settings.urls.api + "tasks/getUserTasks/" + userId + '/' + mode,
     }).done(function (data) {
         if ((data.status == 'error') && (data.error_data.id == 4)) {
             $("body").addClass("blur");
@@ -431,7 +388,7 @@ function checkTime(elementTag) {
 
     $.ajax({
         type: 'POST',
-        url: apiServer + 'tasks/checkTime',
+        url: settings.urls.api + 'tasks/checkTime',
         data: dataOutput,
     }).done(function (data) {
         if (data.status == 'error') {
@@ -442,9 +399,9 @@ function checkTime(elementTag) {
             }, 2000);
         } else {
             if (data.data.time == undefined) {
-                $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> <span onclick="setTime(\'' + elementTag + '\',\'' + data.data.oldTime + '\')">' + data.data.oldTime + '</span>'+
-                '<br>' + '<span onclick="setTime(\'' + elementTag + '\',\'' + data.data.nextTime + '\')">' + data.data.nextTime + '</span>'
-            )
+                $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> <span  class="set-time" onclick="setTime(\'' + elementTag + '\',\'' + data.data.oldTime + '\')">' + data.data.oldTime + '</span>' +
+                    '<br>' + '<span class="set-time" onclick="setTime(\'' + elementTag + '\',\'' + data.data.nextTime + '\')">' + data.data.nextTime + '</span>'
+                )
                 ;
                 $('#' + elementTag + '_text').show();
             }
@@ -489,9 +446,10 @@ function editTaskModal(event, id) {
     event.preventDefault();
     $('#edit_notification').prop('checked', false);
     $('#edit_notification_text').html('');
+    $('#edit_comment').text();
     $.ajax({
         type: 'GET',
-        url: apiServer + 'tasks/get/' + id,
+        url: settings.urls.api + 'tasks/get/' + id,
     }).done(function (data) {
         if (data.status == 'error') {
             console.log(data);
@@ -517,7 +475,7 @@ function editTaskModal(event, id) {
     });
     $.ajax({
         type: 'GET',
-        url: apiServer + 'notifications/getTaskNotifications/' + id,
+        url: settings.urls.api + 'notifications/getTaskNotifications/' + id,
     }).done(function (data) {
         if (data.status !== 'error') {
             console.log(data);
@@ -530,7 +488,7 @@ function editTaskModal(event, id) {
 function endTaskModal(event, id) {
     $.ajax({
         type: 'GET',
-        url: apiServer + 'tasks/get/' + id,
+        url: settings.urls.api + 'tasks/get/' + id,
     }).done(function (data) {
         if (data.status == 'error') {
             console.log(data);
@@ -554,9 +512,13 @@ function additionalInfo(event, amoId) {
     $('#info_nameContact').text('Загрузка...');
     $('#info_telphone').text('Загрузка...');
     $('#info_email').text('Загрузка...');
+    $('#info_supplier_nameCompany').text('Загрузка...');
+    $('#info_supplier_nameContact').text('Загрузка...');
+    $('#info_supplier_telphone').text('Загрузка...');
+    $('#info_supplier_email').text('Загрузка...');
     $.ajax({
         type: 'GET',
-        url: apiServer + 'amocrm/getLeadInfo/' + amoId,
+        url: settings.urls.api + 'amocrm/getLeadInfo/' + amoId,
     }).done(function (data) {
         if (data.status == 'error') {
             console.log(data);
@@ -570,6 +532,10 @@ function additionalInfo(event, amoId) {
             $('#info_nameContact').text(data.data.nameContact);
             $('#info_telphone').text(data.data.telphone + ' ' + data.data.tz);
             $('#info_email').text(data.data.email);
+            $('#info_supplier_nameCompany').text(data.data.nameSCompany);
+            $('#info_supplier_nameContact').text(data.data.emailCompany);
+            $('#info_supplier_telphone').text(data.data.telphoneCompany);
+            $('#info_supplier_email').text(data.data.contactCompany);
         }
 
     });
@@ -581,7 +547,7 @@ function miniEditModal(event, id) {
     $('#miniEdit_comment').val('');
     $.ajax({
         type: 'GET',
-        url: apiServer + 'tasks/get/' + id,
+        url: settings.urls.api + 'tasks/get/' + id,
     }).done(function (data) {
         if (data.status == 'error') {
             console.log(data);
@@ -599,7 +565,7 @@ function miniEditModal(event, id) {
     });
     $.ajax({
         type: 'GET',
-        url: apiServer + 'notifications/getTaskNotifications/' + id,
+        url: settings.urls.api + 'notifications/getTaskNotifications/' + id,
     }).done(function (data) {
         if (data.status != 'error') {
             if (data.status != 'error') {
@@ -621,7 +587,7 @@ function showNotificationModal() {
     var userId = $('meta[name="user_id"]').attr('content');
     $.ajax({
         type: "GET",
-        url: apiServer + "notifications/getAllUserNotifications/" + userId,
+        url: settings.urls.api + "notifications/getAllUserNotifications/" + userId,
     }).done(function (data) {
         if (data.status == 'error') {
             console.log(data);
@@ -686,7 +652,7 @@ function addTask() {
 
     $.ajax({
         type: 'POST',
-        url: apiServer + 'tasks/add',
+        url: settings.urls.api + 'tasks/add',
         data: dataOutput,
     }).done(function (data) {
         if (data.status == 'error') {
@@ -698,7 +664,7 @@ function addTask() {
         } else {
             $.ajax({
                 type: "GET",
-                url: apiServer + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
+                url: settings.urls.api + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
             }).done(function (data) {
                 if ((data.status == 'error') && (data.error_data.id == 4)) {
                     $("body").addClass("blur");
@@ -732,7 +698,7 @@ function editTask() {
 
     $.ajax({
         type: 'POST',
-        url: apiServer + 'tasks/update',
+        url: settings.urls.api + 'tasks/update',
         data: dataOutput,
     }).done(function (data) {
         if (data.status == 'error') {
@@ -744,7 +710,7 @@ function editTask() {
         } else {
             $.ajax({
                 type: "GET",
-                url: apiServer + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
+                url: settings.urls.api + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
             }).done(function (data) {
                 if ((data.status == 'error') && (data.error_data.id == 4)) {
                     $("body").addClass("blur");
@@ -764,7 +730,7 @@ function endTask(id) {
     $('#endTask').modal('hide');
     $.ajax({
         type: 'GET',
-        url: apiServer + 'tasks/delete/' + id,
+        url: settings.urls.api + 'tasks/delete/' + id,
     }).done(function (data) {
         if (data.status == 'error') {
             $('#alert-danger').text('Ошибка при редактировании задачи');
@@ -775,7 +741,7 @@ function endTask(id) {
         } else {
             $.ajax({
                 type: "GET",
-                url: apiServer + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
+                url: settings.urls.api + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
             }).done(function (data) {
                 if ((data.status == 'error') && (data.error_data.id == 4)) {
                     $("body").addClass("blur");
@@ -800,7 +766,7 @@ function miniEdit() {
 
     $.ajax({
         type: 'POST',
-        url: apiServer + 'tasks/miniEdit',
+        url: settings.urls.api + 'tasks/miniEdit',
         data: dataOutput,
     }).done(function (data) {
         if (data.status == 'error') {
@@ -812,7 +778,7 @@ function miniEdit() {
         } else {
             $.ajax({
                 type: "GET",
-                url: apiServer + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
+                url: settings.urls.api + "tasks/getUserTasks/" + data.data.user_id + '/' + mode,
             }).done(function (data) {
                 if ((data.status == 'error') && (data.error_data.id == 4)) {
                     $("body").addClass("blur");
@@ -837,7 +803,7 @@ function renderComment(id) {
 
     $.ajax({
         type: "GET",
-        url: apiServer + "comments/getTaskComments/" + id,
+        url: settings.urls.api + "comments/getTaskComments/" + id,
         beforeSend: function () {
             $panelBody.html('<div class="progress" id="loaderComment">\n' +
                 '  <div class="progress-bar" role="progressbar" id="innerLoaderComment" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>\n' +
@@ -866,37 +832,26 @@ function renderComment(id) {
         }
         if (data.status == 'success') {
             $.each(data.data, function (index, value) {
-                html_data = html_data + '' +
-                    '<div style="\n' +
-                    '    font-size: 12px;\n' +
-                    '    margin-top: 3.5px;\n' +
-                    '    padding-top: 0.5px;\n' +
-                    '    margin-bottom: 0;\n' +
-                    '    border-radius: 15px;\n' +
-                    '    border-top-right-radius: unset;\n' +
-                    '    background: #eee;\n' +
-                    '"> ' +
-                    '<span class="commentDate" style="\n' +
-                    '    padding: 0px 5px 0 0;\n' +
-                    '    float: right;\n' +
-                    '    font-weight: 700;\n' +
-                    '">' + value.created_at + '</span>'
-                    + '<p style="\n' +
-                    '    padding: 0px 10px 2px;\n' +
-                    '    margin-bottom: 0.25px;\n' +
-                    '">' + value.text + '</p>' +
-                    '</div>'
+                var preparedComment = value;
+                html_data = html_data + Twig.twig({ref: "comments"}).render({comment: preparedComment});
             });
             $panelBody.html(html_data);
         }
     });
 }
 
+function clearIntervalMenu() {
+    $('#datetimepicker4').val('');
+    $('#datetimepicker5').val('');
+    changeMode('all');
+    $('#setIntervalMenuModal').modal('hide');
+}
+
 function addCommentModal(id) {
     text: $('#addComment_comment').val('');
     $.ajax({
         type: 'GET',
-        url: apiServer + 'tasks/get/' + id,
+        url: settings.urls.api + 'tasks/get/' + id,
     }).done(function (data) {
         if (data.status == 'error') {
             $('#alert-danger').text('Ошибка при получении данных о задаче');
@@ -921,7 +876,7 @@ function addComment() {
 
     $.ajax({
         type: 'POST',
-        url: apiServer + 'comments/addComment',
+        url: settings.urls.api + 'comments/addComment',
         data: dataOutput,
     }).done(function (data) {
         if (data.status == 'error') {

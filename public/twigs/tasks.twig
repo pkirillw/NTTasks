@@ -1,42 +1,44 @@
 <div class="leftTasks_panel border_{{ task.type.name }}  " id="leftTask_{{ task.id }}">
-    <div class="leftTasks_panel_header" onclick="TaskPlusLibrary.showFullTask({{ task.id }})" style="
+    <div class="leftTasks_panel_header" onclick="TaskPlusLibrary.showFullTask(event, {{ task.id }})" style="
     {% if task.flag_expired == true %}
             background: #f9e4e4;
     {% endif %}
             ">
-        <div class="leftTasks_header_title"> {{ task.number_request }}<br>{{ task.name.type_name }}<br>
-            <small>{{ task.pipeline.name }}</small>
-        </div>
-        <div class="leftTasks_header_date">
-            {% if task.flag_expired == true %}
-                <img src="{{ taskPlusSettings.assetsPath }}images/icon_expired.svg" width="16px"
-                     style=" margin: -4px; ">
-            {% endif %}
-            {% if task.user_id != taskPlusSettings.userInfo.id %}
-                <span>{{ task.complite_till_format }}</span>
-            {% else %}
-                <span onclick="TaskPlusLibrary.miniEditModal({{ task.i }})">{{ task.complite_till_format }}</span>
-            {% endif %}
+        <div class="leftTasks_inner_header">
+            <div class="leftTasks_header_title"> {{ task.number_request }}<br>{{ task.name.type_name }}<br>
+                <small>{{ task.pipeline.name }}</small>
+            </div>
+            <div class="leftTasks_header_date">
+                {% if task.flag_expired == true %}
+                    <img src="{{ taskPlusSettings.assetsPath }}images/icon_expired.svg" width="16px"
+                         style=" margin: -4px; ">
+                {% endif %}
+                {% if task.user_id != taskPlusSettings.userInfo.id %}
+                    <span>{{ task.complite_till_format }}</span>
+                {% else %}
+                    <span onclick="TaskPlusLibrary.miniEditModal({{ task.i }})">{{ task.complite_till_format }}</span>
+                {% endif %}
 
+            </div>
         </div>
-    </div>
-    <div class="leftTasks_panel_body" id="leftTask_body_{{ task.id }}" style="">
         {% if task.user_id == taskPlusSettings.userInfo.id %}
             <div class="leftTasks_menu">
-                <span data-toggle="tooltip" data-placement="top" title="Изменить задачу">
-                    <img src="{{ taskPlusSettings.assetsPath }}images/icon_edit.svg" width="24px"
-                         onclick="TaskPlusLibrary.editTask({{ task.i }})">
-                </span>
-                <span data-toggle="tooltip" data-placement="top" title="Завершить задачу">
-                    <img src="{{ taskPlusSettings.assetsPath }}images/outline-done_outline-24px.svg"
-                         onclick="TaskPlusLibrary.endTask({{ task.i }})">
-                </span>
-                <span data-toggle="tooltip" data-placement="top" title="Информация о поставщиках">
-                    <img src="{{ taskPlusSettings.assetsPath }}images/icon_call1.svg" width="24px"
-                         onclick="TaskPlusLibrary.additionalInfo({{ task.amo_id }})">
-                </span>
+                <span class="inner-icon inner-icon-edit"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      onclick="TaskPlusLibrary.editTask({{ task.i }})"
+                      title="Изменить задачу"></span>
+                <span class="inner-icon inner-icon-done" data-toggle="tooltip"
+                      data-placement="top" onclick="TaskPlusLibrary.endTask({{ task.i }})"
+                      title="Завершить задачу"></span>
+                <span class="inner-icon inner-icon-end" data-toggle="tooltip"
+                      data-placement="top" onclick="TaskPlusLibrary.additionalInfo({{ task.amo_id }})"
+                      title="Информация о поставщиках"></span>
             </div>
         {% endif %}
+    </div>
+    <div class="leftTasks_panel_body" id="leftTask_body_{{ task.id }}" style="">
+
         <div class="leftTasks_comment">
             <h6>URL #1: <a href="{{ task.url1 }}" target="_blank">{{ task.url1_sub }}...</a></h6>
             <h6>URL #2: <a href="{{ task.url2 }}" target="_blank">{{ task.url2_sub }}...</a></h6>
@@ -44,7 +46,7 @@
             <p id="comments_{{ task.id }}"></p>
         </div>
         {% if task.user_id != taskPlusSettings.userInfo.id %}
-            <div class="leftTasks_menu">
+            <div class="leftTasks_another_manager">
                 Данная задача принадлежит другому менеджеру
             </div>
         {% endif %}

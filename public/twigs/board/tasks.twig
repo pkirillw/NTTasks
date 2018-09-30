@@ -1,0 +1,72 @@
+<div class="card task border_{{ task.type }}" id="task{{ task.id }}">
+    <div class="card-header row" draggable="true" id="task-header-{{ task.id }}" onclick="showBody(event,{{ task.id }})" style="
+    {% if task.flag_expired == true %}
+            background: #f9e4e4;
+    {% else %}
+            background: #fff;
+    {% endif %}
+            border-bottom: 0px;
+            padding: 5px 5px 0;
+            margin-right: 0;
+            margin-left: 0;
+            ">
+        <div class="col-sm-10" style="padding: 0;">
+            <h5 class="card-title">
+                <a class="color_{{ task.type }}"
+                   href="https://novyetechnologii.amocrm.ru/leads/detail/{{ task.amo_id }}"
+                   target="_blank">
+                    {{ task.name.name }}
+                    <br>
+                    {{ task.name.type_name }}
+                </a>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                {% if task.flag_expired == true %}
+                    <img src="{{ settings.urls.assets }}/images/new/expired-20px.svg" width="18px" style="">
+                {% endif %}
+                <span class="datetask" onclick="miniEditModal(event,{{ task.id }});">
+                    {{ task.complite_till_format }}
+                </span>
+            </h6>
+            {% if (task.url1 != '') or (task.url2 != '') %}
+                <div id="bodyLinks" style="display: none;font-size: 12px;">
+                    {% if task.url1 != '' %}
+                        <a data-toggle="tooltip" data-placement="top"
+                           href="{{ task.url1 }}" target="_blank" title="{{ task.url1 }}">
+                            {{ task.url1 }}
+                        </a><br>
+                    {% endif %}
+                    {% if task.url2 != '' %}
+                        <a data-toggle="tooltip" data-placement="top"
+                           href="{{ task.url2 }}" target="_blank" title="{{ task.url2 }}">
+                            {{ task.url2 }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-sm-2" style="padding: 0;">
+            <div class="buttons" style="float: right;
+                margin: 5px auto 5px;
+                width: 20px;">
+                <span class="inner-icon inner-icon-edit"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      onclick="editTaskModal(event,{{ task.id }})"
+                      title="Изменить задачу"></span>
+                <span class="inner-icon inner-icon-more" data-toggle="tooltip"
+                      data-placement="top"
+                      title="Развернуть"></span>
+                <span class="inner-icon inner-icon-done" style="display: none;" data-toggle="tooltip"
+                      data-placement="top" onclick="endTaskModal(event,{{ task.id }})"
+                      title="Завершить задачу"></span>
+                <span class="inner-icon inner-icon-end" style="display: none;" data-toggle="tooltip"
+                      data-placement="top" onclick="additionalInfo(event,{{ task.amo_id }})"
+                      title="Информация о поставщиках"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" data-open="false" style="padding: 5px 5px; display: none;">
+        <div id="commentBlock"></div>
+    </div>
+</div>

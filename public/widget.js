@@ -22,7 +22,7 @@ maswidget.init = function (id) {
                 '<div class="nav__menu__item__title">Дела</div>\n' +
                 '</div>\n' +
                 '</div>';
-            $(menuItem).insertAfter('div[data-entity=leads]');
+            $(menuItem).insertAfter('div.nav__menu__item[data-entity=leads]');
             $('div[data-entity=mas] .nav__menu__item__link').click(function (event) {
                 event.preventDefault();
                 var timerId = setInterval(function () {

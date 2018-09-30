@@ -1,26 +1,49 @@
 var TaskPlusLibrary = {};
+const versions = {
+    template: '2.2.3',
+    js: '35',
+    api: 'v1'
+}
 var taskPlusSettings = {
-    apiPath: 'https://mail-nt-rt.ru/NTTasks/public/api/v1/',
-    assetsPath: 'https://mail-nt-rt.ru/NTTasks/public/',
-    taskInfo: {},
-    leadInfo: {},
-    timerId: 0,
-    rotation: 0,
-    userInfo: {},
-    widget: {},
-    templates: {},
-    templatesPaths: {
-        task: 'tasks',
-        comments: 'comments',
-        widget: 'widget',
-        addTaskModal: 'addModal',
-        additionalInfoModal: 'additionalInfoModal',
-        editTaskModal: 'editModal',
-        doneTaskModal: 'doneModal',
-        addCommentModal: 'addCommentModal',
-        miniEditTaskModal: 'miniEditModal'
+        apiPath: 'https://mail-nt-rt.ru/NTTasks/public/api/' + versions.api + '/',
+        assetsPath:
+            'https://mail-nt-rt.ru/NTTasks/public/',
+        taskInfo:
+            {}
+        ,
+        leadInfo: {}
+        ,
+        timerId: 0,
+        rotation:
+            0,
+        userInfo:
+            {}
+        ,
+        widget: {}
+        ,
+        templates: {}
+        ,
+        templatesPaths: {
+            task: 'tasks',
+            comments:
+                'comments',
+            widget:
+                'widget',
+            addTaskModal:
+                'addModal',
+            additionalInfoModal:
+                'additionalInfoModal',
+            editTaskModal:
+                'editModal',
+            doneTaskModal:
+                'doneModal',
+            addCommentModal:
+                'addCommentModal',
+            miniEditTaskModal:
+                'miniEditModal'
+        }
     }
-};
+;
 
 
 TaskPlusLibrary.GenerateLeftArea = function (widget) {
@@ -109,7 +132,53 @@ TaskPlusLibrary.renderTasks = function () {
     clearInterval(taskPlusSettings.timerId);
 }
 
-TaskPlusLibrary.showFullTask = function (id) {
+TaskPlusLibrary.checkTime = function (elementTag) {
+    $('#' + elementTag + '_text').html('');
+    $('#' + elementTag + '_text').hide();
+    var dataOutput = {
+        user_id: AMOCRM.data.current_card.user.id,
+        time: $('#' + elementTag).val(),
+    };
+    self.crm_post(
+        taskPlusSettings.apiPath + 'tasks/checkTime',
+        dataOutput,
+        function (data) {
+            if (data.status == 'error') {
+                $('#alert-danger').text('Ошибка при редактировании задачи');
+                $('#alert-danger').fadeIn();
+                setTimeout(function () {
+                    $('#alert-danger').fadeOut();
+                }, 2000);
+            } else {
+                if (data.data.time == undefined) {
+                    $('#' + elementTag + '_text').html('Указанное вами время занято, свободное время: <br> <span  class="set-time" onclick="TaskPlusLibrary.setTime(\'' + elementTag + '\',\'' + data.data.oldTime + '\')">' + data.data.oldTime + '</span>' +
+                        '<br>' + '<span class="set-time" onclick="TaskPlusLibrary.setTime(\'' + elementTag + '\',\'' + data.data.nextTime + '\')">' + data.data.nextTime + '</span>'
+                    )
+                    ;
+                    $('#' + elementTag + '_text').show();
+                }
+            }
+        },
+        'json',
+        function () {
+            alert('Error');
+        }
+    );
+}
+
+TaskPlusLibrary.setTime = function (elementTag, time) {
+    $('#' + elementTag).val(time);
+    $('#' + elementTag).trigger('change');
+}
+
+
+TaskPlusLibrary.showFullTask = function (event, id) {
+    if (event.target.className == 'leftTasks_header_date' || event.target.className == 'inner-icon inner-icon-end'
+        || event.target.className == 'inner-icon inner-icon-done' || event.target.className == 'inner-icon inner-icon-edit'
+        || event.target.className == 'color_success' || event.target.className == 'color_danger'
+        || event.target.className == 'color_warning') {
+        return;
+    }
     $("#leftTask_body_" + id).toggle("slow", function () {
     });
 };
@@ -140,7 +209,7 @@ TaskPlusLibrary.editTask = function (id) {
                 lang: 'ru',
                 format: 'd.m.Y H:i',
                 dayOfWeekStart: 1,
-                step: 15
+                step: 10
             });
         },
         destroy: function () {
@@ -232,7 +301,7 @@ TaskPlusLibrary.addTask = function () {
                 lang: 'ru',
                 format: 'd.m.Y H:i',
                 dayOfWeekStart: 1,
-                step: 15
+                step: 10
             })
         },
         destroy: function () {
@@ -348,6 +417,10 @@ TaskPlusLibrary.additionalInfo = function (amoId) {
     $('#info_nameContact').text('Загрузка...');
     $('#info_telphone').text('Загрузка...');
     $('#info_email').text('Загрузка...');
+    $('#info_supplier_nameCompany').text('Загрузка...');
+    $('#info_supplier_nameContact').text('Загрузка...');
+    $('#info_supplier_telphone').text('Загрузка...');
+    $('#info_supplier_email').text('Загрузка...');
     TaskPlusLibrary.api(
         taskPlusSettings.apiPath + 'amocrm/getLeadInfo/' + amoId,
         function (data) {
@@ -356,6 +429,10 @@ TaskPlusLibrary.additionalInfo = function (amoId) {
             $('#info_nameContact').text(data.data.nameContact);
             $('#info_telphone').text(data.data.telphone + ' ' + data.data.tz);
             $('#info_email').text(data.data.email);
+            $('#info_supplier_nameCompany').text(data.data.nameSCompany);
+            $('#info_supplier_nameContact').text(data.data.emailCompany);
+            $('#info_supplier_telphone').text(data.data.telphoneCompany);
+            $('#info_supplier_email').text(data.data.contactCompany);
         },
         function (data) {
         });
@@ -440,7 +517,7 @@ TaskPlusLibrary.miniEditModal = function (id) {
                 lang: 'ru',
                 format: 'd.m.Y H:i',
                 dayOfWeekStart: 1,
-                step: 15
+                step: 10
             });
         },
         destroy: function () {
@@ -504,6 +581,22 @@ TaskPlusLibrary.getData = function () {
 };
 
 TaskPlusLibrary.templateLoader = function () {
+    if (localStorage.getItem('AMOWIDGET_NTTASKS_VERSION_TEMPLATES') == null) {
+        console.log('Версия шаблонов не указана, загружаем с сервера');
+        $.each(taskPlusSettings.templatesPaths, function (index, value) {
+            TaskPlusLibrary.getTemplate(value, function (data) {
+                taskPlusSettings.templates[index] = data;
+                localStorage.setItem('AMOWIDGET_NTTASKS_TEMPLATE_' + index, data);
+            });
+        });
+        localStorage.setItem('AMOWIDGET_NTTASKS_VERSION_TEMPLATES', versions.template);
+        return true;
+    }
+    if (localStorage.getItem('AMOWIDGET_NTTASKS_VERSION_TEMPLATES') != versions.template) {
+        console.log('Версия шаблонов указана, но не совпадает с актуальной, чистим хранилище');
+        localStorage.setItem('AMOWIDGET_NTTASKS_VERSION_TEMPLATES', versions.template);
+        TaskPlusLibrary.resetTemplates();
+    }
     $.each(taskPlusSettings.templatesPaths, function (index, value) {
         if (localStorage.getItem('AMOWIDGET_NTTASKS_TEMPLATE_' + index) == null) {
             TaskPlusLibrary.getTemplate(value, function (data) {
@@ -525,6 +618,9 @@ TaskPlusLibrary.resetTemplates = function () {
 }
 
 window.taskPlusWidget.render.push(function (widget) {
+    console.log('Текущая версия виджета Дела:');
+    console.log(versions);
+    console.log('============================');
     TaskPlusLibrary.templateLoader();
     taskPlusSettings.leadInfo = {
         id: AMOCRM.data.current_card.id,

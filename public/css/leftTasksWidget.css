@@ -7,8 +7,16 @@
     margin-bottom: 10px;
 }
 
+.leftTasks_inner_header {
+    width: 202px;
+    display: inline-block;
+}
+
 .leftTasks_panel_header {
-    padding: 10px;
+    padding: 5px;
+    background: #f9e4e4;
+    display: inline-block;
+    width: 222px;
 }
 
 .border_success {
@@ -35,14 +43,21 @@
 }
 
 .leftTasks_panel_body {
-    padding: 10px;
+    padding: 5px;
+    width: 222px;
 }
 
 .leftTasks_comment {
-    padding-bottom: 10px;
     font-size: 12px;
 }
 
+.leftTasks_header_date:hover {
+    color: #000 !important;
+}
+.set-time:hover {
+    font-weight: 600;
+    cursor: pointer;
+}
 .leftTasks_addTask {
     text-align: center;
     margin: 10px;
@@ -50,7 +65,16 @@
 
 .leftTasks_menu {
     text-align: center;
+    width: 20px;
+    float: right;
+    padding: 0px 0px;
+    display: inline-block;
 }
+
+.leftTasks_another_manager {
+    text-align: center;
+}
+
 .modalTasks_endTask_title {
     font-size: 18px;
     text-align: center;
@@ -69,4 +93,82 @@ button.modalTasks_endTask_button {
     font-weight: 600;
     border: 1px solid;
     cursor: pointer;
+}
+
+.comments-text {
+    padding: 0px 10px 2px;
+    margin-bottom: 0.25px;
+}
+
+.comments-date {
+    padding: 0px 5px 0 0;
+    float: right;
+    font-weight: 700;
+}
+
+.comments-comment {
+    font-size: 12px;
+    margin-top: 3.5px;
+    padding-top: 0.5px;
+    margin-bottom: 0;
+    border-radius: 15px;
+    border-top-right-radius: unset;
+    background: #eee;
+}
+
+.comments-add-button {
+    text-align: center;
+    width: 160px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.comments-add-button:hover {
+    background: #ddd;
+}
+
+.inner-icon {
+    width: 20px;
+    display: inline-block;
+    height: 20px;
+}
+
+.inner-icon-edit {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/edit-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-edit:hover {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/edit-hover-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-done {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/done-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-done:hover {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/done-hover-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-end {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/contact-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-end:hover {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/new/contact-hover-20px.svg);
+    background-size: 20px;
+}
+
+.inner-icon-more {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/outline-more_horiz-24px_hover.svg);
+    background-size: 20px;
+}
+
+.inner-icon-more:hover {
+    background: url(https://mail-nt-rt.ru/NTTasks/public/images/outline-more_horiz-24px.svg);
+    background-size: 20px;
 }

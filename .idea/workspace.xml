@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8de09391-6027-443a-933a-3731eb6fd6dd" name="Default" comment="" />
+    <list default="true" id="8de09391-6027-443a-933a-3731eb6fd6dd" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/twig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NTTasks.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NTTasks.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/leftTasksWidget.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/leftTasksWidget.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/newKanban.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/newKanban.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/kanban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/addModal.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/addModal.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/additionalInfoModal.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/additionalInfoModal.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/comments.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/comments.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/editModal.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/editModal.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/miniEditModal.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/miniEditModal.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/twigs/tasks.twig" beforeDir="false" afterPath="$PROJECT_DIR$/public/twigs/tasks.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/widget.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/widget.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/widgetTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/widgetTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/board2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/board2.blade.php" afterDir="false" />
+    </list>
+    <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,40 +34,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="widgetTasks.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/widgetTasks.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="482" column="27" selection-start-line="482" selection-start-column="27" selection-end-line="482" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addModal.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/twigs/addModal.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kanban.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="kanban.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/kanban.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="197" column="26" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
+            <state relative-caret-position="783">
+              <caret line="537" column="69" lean-forward="true" selection-start-line="537" selection-start-column="69" selection-end-line="537" selection-end-column="69" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#!!block;n#timeConverter#0" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
                 <element signature="n#!!block;n#addCommentModal#0" />
                 <element signature="n#!!block;n#addComment#0" />
               </folding>
@@ -55,57 +50,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newKanban.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/newKanban.css">
+      <file leaf-file-name="additionalInfoModal.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/twigs/additionalInfoModal.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kanban.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/kanban.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5980" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="widget.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/widget.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+            <state relative-caret-position="612">
+              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+              <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+              <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+              <caret line="32" column="54" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+              <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+              <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
               <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#8;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NotificationController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/NotificationController.php">
+      <file leaf-file-name="widgetTasks.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/widgetTasks.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="83" column="36" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="36" />
+            <state relative-caret-position="714">
+              <caret line="431" column="64" selection-start-line="431" selection-start-column="64" selection-end-line="431" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board2.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/board2.blade.php">
+      <file leaf-file-name="textarea.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/twigs/textarea.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1414">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editModal.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/twigs/editModal.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state>
+              <caret column="61" selection-start-column="31" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -113,8 +97,53 @@
       <file leaf-file-name="miniEditModal.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/twigs/miniEditModal.twig">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="11" column="97" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/twigs/input.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suggest.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/twigs/suggest.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="select.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/twigs/select.twig">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="20" column="79" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="79" />
+              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delete_button.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Downloads/twigs/delete_button.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="3" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="button.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/twigs/button.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="88" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -125,27 +154,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Modal</find>
-      <find>'</find>
-      <find>&quot;en&quot;</find>
-      <find>datepic</find>
-      <find>d.m.Y</find>
-      <find>.datetimepicker</find>
-      <find>datetimepi</find>
-      <find>AmoCrm</find>
-      <find>https://mail-nt-rt.ru/NTTasks/public/</find>
-      <find>https://tasks.pkirillw.ru/</find>
-      <find>Facade</find>
-      <find>Dotzero</find>
-      <find>laravel</find>
-      <find>LaravelAmoCrm</find>
       <find>Amocrm</find>
       <find>https://mail-nt-rt.ru/NTTasks</find>
       <find>https://mail-nt-rt.ru/NTTasks/public</find>
@@ -160,27 +175,41 @@
       <find>showMessage</find>
       <find>showSuccess</find>
       <find>showSuccess:</find>
-      <find>each</find>
       <find>timerId</find>
+      <find>each</find>
+      <find>complite_till - 5 * 60</find>
+      <find>comment</find>
+      <find>Уведомить за 5 минут?</find>
+      <find>dra</find>
+      <find>apiServer</find>
+      <find>path</find>
+      <find>приоритет</find>
+      <find>addCommentButton</find>
+      <find>leftTasks_panel_body</find>
+      <find>inner-icon</find>
+      <find>set-time</find>
+      <find>{{url('/')}}</find>
+      <find>datetimepicker1_text</find>
+      <find>user_id</find>
     </findStrings>
     <replaceStrings>
       <replace>['id' =&gt; $request-&gt;user_id]</replace>
       <replace>https://tasks.pkirillw.ru/</replace>
-      <replace>https://mail-nt-rt.ru/NTTasks/public/</replace>
       <replace>{{url('/')}}</replace>
       <replace>&quot;tasks/getUserTasks/&quot; + userId + '/' + mode</replace>
       <replace>taskPlusSettings.timerId</replace>
+      <replace>Уведомить?</replace>
+      <replace>settings.urls.api</replace>
+      <replace>settings.urls.assets</replace>
+      <replace>https://mail-nt-rt.ru/NTTasks/public/</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/bootstrap-datetimepicker.min.js" />
-        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/public/htmlWidget.html" />
-        <option value="$PROJECT_DIR$/public/tempBlock.html" />
-        <option value="$PROJECT_DIR$/public/endTask.html" />
-        <option value="$PROJECT_DIR$/public/css/styleWidget.css" />
         <option value="$PROJECT_DIR$/resources/views/board.blade.php" />
         <option value="$PROJECT_DIR$/public/tempBlock1.html" />
         <option value="$PROJECT_DIR$/public/js/jquery.datetimepicker.js" />
@@ -198,34 +227,40 @@
         <option value="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Traits/ApiResponse.php" />
         <option value="$PROJECT_DIR$/public/css/kanban.css" />
-        <option value="$PROJECT_DIR$/config/apierror.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/CommentsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/board3.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php" />
-        <option value="$PROJECT_DIR$/public/css/newKanban.css" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/NotificationController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" />
         <option value="$PROJECT_DIR$/resources/views/board3.blade.php" />
         <option value="$PROJECT_DIR$/public/twigs/widget" />
         <option value="$PROJECT_DIR$/public/twigs/widget.twig" />
-        <option value="$PROJECT_DIR$/public/css/leftTasksWidget.css" />
         <option value="$PROJECT_DIR$/public/twigs/doneModal.twig" />
-        <option value="$PROJECT_DIR$/public/twigs/comments.twig" />
         <option value="$PROJECT_DIR$/public/twigs/addCommentModal.twig" />
-        <option value="$PROJECT_DIR$/public/twigs/additionalInfoModal.twig" />
-        <option value="$PROJECT_DIR$/public/twigs/tasks.twig" />
-        <option value="$PROJECT_DIR$/public/twigs/editModal.twig" />
-        <option value="$PROJECT_DIR$/public/twigs/addModal.twig" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/TaskController.php" />
         <option value="E:/app.js" />
+        <option value="$PROJECT_DIR$/config/apierror.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/NotificationController.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/TaskController.php" />
+        <option value="$PROJECT_DIR$/public/twigs/board/comments.twig" />
         <option value="$PROJECT_DIR$/public/widget.js" />
-        <option value="$PROJECT_DIR$/public/twigs/miniEditModal.twig" />
-        <option value="$PROJECT_DIR$/public/widgetTasks.js" />
         <option value="$PROJECT_DIR$/resources/views/board2.blade.php" />
+        <option value="$PROJECT_DIR$/public/twigs/board/tasks.twig" />
+        <option value="$PROJECT_DIR$/public/css/newKanban.css" />
+        <option value="$PROJECT_DIR$/public/twigs/comments.twig" />
+        <option value="$PROJECT_DIR$/public/twigs/tasks.twig" />
+        <option value="$PROJECT_DIR$/public/twigs/miniEditModal.twig" />
+        <option value="$PROJECT_DIR$/public/twigs/addModal.twig" />
+        <option value="$PROJECT_DIR$/public/twigs/editModal.twig" />
+        <option value="$PROJECT_DIR$/public/css/leftTasksWidget.css" />
+        <option value="$PROJECT_DIR$/public/additionalInfo.html" />
+        <option value="$PROJECT_DIR$/public/twigs/additionalInfoModal.twig" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php" />
         <option value="$PROJECT_DIR$/public/js/kanban.js" />
+        <option value="$PROJECT_DIR$/public/widgetTasks.js" />
+        <option value="$USER_HOME$/Downloads/twigs/textarea.twig" />
+        <option value="$USER_HOME$/Downloads/twigs/input.twig" />
       </list>
     </option>
   </component>
@@ -304,11 +339,14 @@
       <path value="$PROJECT_DIR$/vendor/dotzero/laravel-amocrm" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-4" />
     <option name="y" value="11" />
     <option name="width" value="1929" />
     <option name="height" value="860" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -366,12 +404,6 @@
             <path>
               <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
               <item name="NTTasks" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Traits" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NTTasks" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="bootstrap" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -388,19 +420,14 @@
               <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
               <item name="NTTasks" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NTTasks" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="twigs" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
               <item name="NTTasks" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="twigs" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="board" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="NTTasks" type="b2602c69:ProjectViewProjectNode" />
@@ -438,13 +465,30 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="461" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="461" />
     <property name="SearchEverywhereHistoryKey" value="w&#9;FILE&#9;file://E:/Projects/NTTasks/public/widgetTasks.js&#10;Tas&#9;FILE&#9;file://E:/Projects/NTTasks/app/Http/Controllers/Api/V1/TaskController.php&#10;tas&#9;FILE&#9;file://E:/Projects/NTTasks/config/tasktypes.php&#10;tasktype&#9;FILE&#9;file://E:/Projects/NTTasks/config/tasktypes.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -468,7 +512,7 @@
     <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Kirill\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -567,27 +611,36 @@
       <workItem from="1536836565562" duration="26644000" />
       <workItem from="1536893798758" duration="703000" />
       <workItem from="1537049383037" duration="1854000" />
+      <workItem from="1537147698222" duration="4972000" />
+      <workItem from="1537192912376" duration="900000" />
+      <workItem from="1537230497023" duration="4410000" />
+      <workItem from="1537304807836" duration="11909000" />
+      <workItem from="1537937397815" duration="599000" />
+      <workItem from="1537958984460" duration="2330000" />
+      <workItem from="1538026175999" duration="11925000" />
+      <workItem from="1538111495265" duration="4457000" />
+      <workItem from="1538319063976" duration="10135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303036000" />
+    <option name="totallyTimeSpent" value="354673000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3297062" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4657236" visible="true" weight="0.2803838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4548422" visible="true" weight="0.19029851" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.53427637" side_tool="true" visible="true" weight="0.2803838" />
+      <window_info id="Structure" order="1" sideWeight="0.5451578" side_tool="true" visible="true" weight="0.19029851" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -603,19 +656,19 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47116432" weight="0.2739872" />
       <window_info id="Structure" order="1" sideWeight="0.5288357" side_tool="true" weight="0.2739872" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.3297062" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -629,99 +682,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="13" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_classmap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="125" column="27" selection-start-line="125" selection-start-column="14" selection-end-line="125" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/app.php" />
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="458" column="9" selection-start-line="458" selection-start-column="9" selection-end-line="458" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/SPL/SPL_f.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_real.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/ClassLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1428" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/jquery.datetimepicker.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="717" column="20" selection-start-line="717" selection-start-column="20" selection-end-line="717" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2176">
-          <caret line="49" column="69" lean-forward="true" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/tasktypes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Traits/ApiResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -736,20 +700,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/apierror.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/board3.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-3/board3.blade.php" />
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -761,20 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="902">
           <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -797,9 +734,6 @@
         <state relative-caret-position="17">
           <caret line="337" column="108" selection-start-line="337" selection-start-column="108" selection-end-line="337" selection-end-column="108" />
           <caret line="332" column="109" selection-start-line="332" selection-start-column="109" selection-end-line="332" selection-end-column="109" />
-          <folding>
-            <element signature="n#style#0;n#span#3;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/leftTasksWidget.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="718">
@@ -839,59 +766,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/additionalInfoModal.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/addCommentModal.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/comments.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="53" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/twigs/doneModal.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/widget.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/tasks.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/TaskController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="349" column="45" selection-start-line="349" selection-start-column="45" selection-end-line="349" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -909,88 +787,281 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/miniEditModal.twig">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="79" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="79" />
+        <state relative-caret-position="357">
+          <caret line="27" column="54" lean-forward="true" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/editModal.twig">
+    <entry file="file://$PROJECT_DIR$/config/apierror.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="714">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/widgetTasks.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="482" column="27" selection-start-line="482" selection-start-column="27" selection-end-line="482" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/twigs/addModal.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+        <state relative-caret-position="340">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/NotificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="83" column="36" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="36" />
+        <state relative-caret-position="1105">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/calendar/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/calendar/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="109" column="11" selection-start-line="98" selection-start-column="4" selection-end-line="109" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/TaskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5746">
+          <caret line="351" selection-start-line="351" selection-end-line="351" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/board/comments.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/comments.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/board/tasks.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="51" column="16" lean-forward="true" selection-start-line="51" selection-start-column="16" selection-end-line="64" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/addCommentModal.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/tasks.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="85" selection-start-line="1" selection-start-column="85" selection-end-line="1" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/newKanban.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+        <state relative-caret-position="691">
+          <caret line="302" selection-start-line="302" selection-end-line="305" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/kanban.css">
+    <entry file="file://$PROJECT_DIR$/public/twigs/addModal.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5980" />
+        <state relative-caret-position="497">
+          <caret line="68" column="104" lean-forward="true" selection-start-line="68" selection-start-column="104" selection-end-line="68" selection-end-column="120" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/editModal.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="87" selection-start-line="11" selection-start-column="87" selection-end-line="11" selection-end-column="87" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/leftTasksWidget.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/board2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="469" column="16" lean-forward="true" selection-start-line="469" selection-start-column="16" selection-end-line="513" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#div#6;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/widget.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="9" selection-start-line="102" selection-start-column="9" selection-end-line="102" selection-end-column="9" />
+        <state relative-caret-position="408">
+          <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
           <folding>
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/board2.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/init.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/widget.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1414">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        <state>
+          <caret column="114" lean-forward="true" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/tempBlock12.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/additionalInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/V1/AmoCRMController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="97" column="31" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/kanban.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="197" column="26" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
+        <state relative-caret-position="783">
+          <caret line="537" column="69" lean-forward="true" selection-start-line="537" selection-start-column="69" selection-end-line="537" selection-end-column="69" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#timeConverter#0" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#!!top" expanded="true" />
             <element signature="n#!!block;n#addCommentModal#0" />
             <element signature="n#!!block;n#addComment#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/widgetTasks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="431" column="64" selection-start-line="431" selection-start-column="64" selection-end-line="431" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/textarea.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="61" selection-start-column="31" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/additionalInfoModal.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <caret line="32" column="54" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+          <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+          <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#8;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/twigs/miniEditModal.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="97" selection-start-line="11" selection-start-column="71" selection-end-line="11" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/button.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="88" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/input.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/suggest.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/select.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/twigs/delete_button.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="3" selection-end-column="7" />
         </state>
       </provider>
     </entry>

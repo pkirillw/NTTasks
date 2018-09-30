@@ -1,14 +1,16 @@
 {% if task.user_id == taskPlusSettings.userInfo.id %}
-<p style="font-size: 12px; margin-bottom: 2.5px; padding-bottom: 2.5px; text-align: center;"
-   onclick="TaskPlusLibrary.addCommentModal({{ task.i }})">
-    + добавить комментарий
-</p>
+    <p class="comments-add-button" onclick="TaskPlusLibrary.addCommentModal({{ task.i }})">
+        + добавить комментарий
+    </p>
 {% endif %}
 {% for comment in comments %}
-<p style="font-size: 12px; margin-top: 2.5px; padding-top: 2.5px; margin-bottom: 0; border-top: 1px solid #eee;">
-    <span class="commentDate" style="padding: 0px 5px 0 0; margin-right: 5px; border-right: 1px solid #bbb;">
-       {{ comment.created_at }}
-    </span>
-    {{ comment.text }}
-</p>
+    <div class="comments-comment">
+        <span class="comments-date">
+            {{ comment.created_at }}
+        </span>
+        <p class="comments-text">
+            {{ comment.text }}
+        </p>
+
+    </div>
 {% endfor %}

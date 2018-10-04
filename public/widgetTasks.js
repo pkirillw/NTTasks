@@ -1,7 +1,7 @@
 var TaskPlusLibrary = {};
 const versions = {
-    template: '2.2.3',
-    js: '35',
+    template: '2.2.5',
+    js: '39',
     api: 'v1'
 }
 var taskPlusSettings = {
@@ -73,6 +73,28 @@ TaskPlusLibrary.GenerateLeftArea = function (widget) {
     TaskPlusLibrary.getData();
 
 };
+
+TaskPlusLibrary.generateDateTimePicker = function (element) {
+    $('#' + element).datetimepicker({
+        lang: 'ru',
+        i18n: {
+            ru: {
+                months: [
+                    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август',
+                    'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',],
+                dayOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб.",],
+            }
+        },
+        format: 'd.m.Y H:i',
+        onChangeDateTime: function (dp, $input) {
+            TaskPlusLibrary.checkTime(event, element);
+        },
+        dayOfWeekStart: 1,
+        step: 10,
+    });
+    $('#' + element).datetimepicker('show');
+}
+
 TaskPlusLibrary.getTemplate = function (name, callbackSuccess) {
     console.time('[LOAD TEMPLATE] ' + taskPlusSettings.assetsPath + 'twigs/' + name + '.twig');
     $.ajax({
@@ -132,9 +154,10 @@ TaskPlusLibrary.renderTasks = function () {
     clearInterval(taskPlusSettings.timerId);
 }
 
-TaskPlusLibrary.checkTime = function (elementTag) {
+TaskPlusLibrary.checkTime = function (event, elementTag) {
     $('#' + elementTag + '_text').html('');
     $('#' + elementTag + '_text').hide();
+    $('#' + elementTag).datetimepicker('destroy');
     var dataOutput = {
         user_id: AMOCRM.data.current_card.user.id,
         time: $('#' + elementTag).val(),
@@ -168,7 +191,8 @@ TaskPlusLibrary.checkTime = function (elementTag) {
 
 TaskPlusLibrary.setTime = function (elementTag, time) {
     $('#' + elementTag).val(time);
-    $('#' + elementTag).trigger('change');
+    $('#' + elementTag + '_text').html('');
+    $('#' + elementTag + '_text').hide();
 }
 
 

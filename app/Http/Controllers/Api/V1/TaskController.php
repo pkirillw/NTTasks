@@ -147,6 +147,65 @@ class TaskController extends Controller
         return $this->prepareReturn($response);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function search(Request $request)
+    {
+        if (empty($request)) {
+            return $this->prepareReturn('_empty_request', 'error');
+        }
+        $response = [];
+        $typesTasks = Types::all()->toArray();
+        $timeFrom = \DateTime::createFromFormat('d.m.Y H:i', $request->timeFrom)->format('U');
+        $timeTo = \DateTime::createFromFormat('d.m.Y H:i', $request->timeTo)->format('U');
+
+        $sqlFilter = [];
+        $sqlFilter[] = ['user_id', '=', $request->userId];
+        $sqlFilter[] = ['complite_till', '>', $timeFrom];
+        $sqlFilter[] = ['complite_till', '<', $timeTo];
+        if ($request->end == 'false') {
+            $sqlFilter[] = ['status', '=', 0];
+        }
+        if ($request->type != 0) {
+            $sqlFilter[] = ['type_id', '=', $request->type];
+        }
+
+        $userTasks = Tasks::where($sqlFilter)->orderBy('complite_till', 'asc')->get();
+
+        if (empty($userTasks->toArray())) {
+            return $this->prepareReturn('_empty_user_tasks', 'error');
+        }
+        foreach ($userTasks as $userTask) {
+            $task = $userTask->toArray();
+            $keyTypeTask = array_search($userTask->type_id, array_column($typesTasks, 'id'));
+            if ($keyTypeTask !== false) {
+                $task['type'] = $typesTasks[$keyTypeTask]['name'];
+            }
+            if (!empty($request->text))
+            {
+                if (stripos($task['number_request'], $request->text) === false) {
+                    continue;
+                }
+            }
+            $task['name'] = [
+                'type_name' => config('tasktypes.taskTypes')[$task['task_name_type']],
+                'name' => $task['number_request']
+            ];
+            if ($task['complite_till'] < time()) {
+                $task['flag_expired'] = true;
+            } else {
+                $task['flag_expired'] = false;
+            }
+            $response['tasks'][] = $task;
+
+        }
+        $response['user']['id'] = $request->userId;
+
+        return $this->prepareReturn($response);
+    }
+
 
     /**
      * @param int $leadId

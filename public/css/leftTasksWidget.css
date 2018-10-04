@@ -14,9 +14,8 @@
 
 .leftTasks_panel_header {
     padding: 5px;
-    background: #f9e4e4;
     display: inline-block;
-    width: 222px;
+    width: -webkit-fill-available;
 }
 
 .border_success {

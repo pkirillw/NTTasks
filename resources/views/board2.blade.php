@@ -186,6 +186,104 @@
                 <input type="text" class="form-control" id="searchText" placeholder="Поиск" aria-label="Поиск"
                        aria-describedby="basic-addon2">
                 <div class="input-group-append">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" onclick="openAdditionalMenuSearch()"
+                                style="border-radius: 0;">
+                            Фильтр
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" id="search-filter"
+                             aria-labelledby="dropdownMenuButton"
+                             style="max-width: 51rem; min-width: 30rem;">
+                            <div class="container">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Время ОТ</label>
+                                                <div class="input-group mb-3">
+                                                    <input name="complite_till" type='text'
+                                                           id='datetimepicker8' class="form-control"
+                                                           aria-describedby="basic-addon2"
+                                                           value="{{date('d.m.Y H:i')}}">
+                                                    <div class="input-group-append"
+                                                         onclick="$('#datetimepicker8').datetimepicker('show');">
+                                <span class="input-group-text" id="basic-addon2"><img width="24px"
+                                                                                      src="{{url('/')}}/images/new/calendar-20px.svg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Время ДО</label>
+                                                <div class="input-group mb-3">
+                                                    <input name="complite_till" type='text'
+                                                           id='datetimepicker9' class="form-control"
+                                                           aria-describedby="basic-addon2"
+                                                           value="{{date('d.m.Y H:i')}}">
+                                                    <div class="input-group-append"
+                                                         onclick="$('#datetimepicker9').datetimepicker('show');">
+                                <span class="input-group-text" id="basic-addon2"><img width="24px"
+                                                                                      src="{{url('/')}}/images/new/calendar-20px.svg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Приоритет задачи</label>
+                                                <select name="search_type_id" id="search_type_id" class="form-control"
+                                                        style="width: 100%;">
+                                                    <option value="0">
+                                                        Не учитывать
+                                                    </option>
+                                                    <option style="background: #ff0000; color: #000;" value="1">
+                                                        Высокий
+                                                    </option>
+                                                    <option style="background: #92d050; color: #000;" value="3">
+                                                        Средний
+                                                    </option>
+                                                    <option style="background: #9e9e9e; color: #FFF;" value="2">Низкий
+                                                    </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="search_end">
+                                                <label class="form-check-label" for="search_end">
+                                                    Искать в завершенных?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+
+                                        <div class="col-sm">
+                                            <button type="button" class="btn btn-primary pull-left"
+                                                    onclick="setSearch()">Применить фильтр
+                                            </button>
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" class="btn btn-secondary "
+                                                    onclick="clearSearch()"
+                                                    style="
+    float: right;
+">Отменить фильтр
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn btn-primary" type="button"
                             style="color: #fff; -webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;"
                             onclick="searchit();">Поиск
@@ -193,12 +291,10 @@
                 </div>
             </div>
         </form>
-
         <a class="btn btn-primary"
            style="color: #f5f5f5;margin: 10px;text-transform: uppercase;font-family: 'Arial';font-weight: 600;font-size: 15px;border-radius: 0px;"
            data-toggle="modal" data-target="#createTask" onclick="addTaskModal()">+ Добавить задачу</a>
     </div>
-
 </nav>
 <div class="container-fluid">
     <div class="row">
@@ -316,10 +412,10 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Время окончания задачи</label>
                         <div class="input-group mb-3">
-                            <input name="complite_till" type='text' onchange="checkTime('datetimepicker1')"
+                            <input name="complite_till" type='text' onclick="generateDateTimePicker('datetimepicker1')"
                                    id='datetimepicker1' class="form-control"
                                    aria-describedby="basic-addon2" value="{{date('d.m.Y H:i')}}">
-                            <div class="input-group-append" onclick="$('#datetimepicker1').datetimepicker('show');">
+                            <div class="input-group-append" onclick="generateDateTimePicker('#datetimepicker1');">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
                                                                                       src="{{url('/')}}/images/new/calendar-20px.svg"></span>
                             </div>
@@ -369,10 +465,10 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Время окончания задачи</label>
                         <div class="input-group mb-3">
-                            <input name="complite_till" type='text' onchange="checkTime('datetimepicker2')"
+                            <input name="complite_till" type='text' onclick="generateDateTimePicker('datetimepicker2')"
                                    id='datetimepicker2' class="form-control"
                                    aria-describedby="basic-addon2">
-                            <div class="input-group-append" onclick="$('#datetimepicker2').datetimepicker('show');">
+                            <div class="input-group-append" onclick="generateDateTimePicker('datetimepicker2');">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
                                                                                       src="{{url('/')}}/images/new/calendar-20px.svg"></span>
                             </div>
@@ -516,7 +612,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="endTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -552,7 +647,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="addComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog  modal-lg" role="document">
@@ -587,7 +681,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="miniEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog  modal-lg" role="document">
@@ -607,10 +700,11 @@
                 <div class="form-group" style="width: 308px;">
                     <label for="exampleInputEmail1">Время окончания задачи</label>
                     <div class="input-group mb-3">
-                        <input name="complite_till" type='text' onchange="checkTime('datetimepicker3')"
+                        <input name="complite_till" type='text'
+                               onclick="generateDateTimePicker('datetimepicker3')"
                                id='datetimepicker3' class="form-control"
                                aria-describedby="basic-addon2">
-                        <div class="input-group-append" onclick="$('#datetimepicker3').datetimepicker('show');">
+                        <div class="input-group-append" onclick="generateDateTimePicker('datetimepicker3')">
                                 <span class="input-group-text" id="basic-addon2"><img width="24px"
                                                                                       src="{{url('/')}}/images/new/calendar-20px.svg"></span>
                         </div>
@@ -641,7 +735,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="setIntervalMenuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog  modal-lg" role="document">
@@ -699,7 +792,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">

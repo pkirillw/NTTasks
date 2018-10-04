@@ -66,8 +66,8 @@
     <div class="form-group">
         <label>Время окончания задачи</label>
         <div class="input-group">
-            <input class="form-control" name="complite_till" type="text" id="datetimepicker1" onchange="TaskPlusLibrary.checkTime('datetimepicker1')">
-            <div class="input-group-addon" onclick="$('#datetimepicker1').datetimepicker('show');"><span
+            <input class="form-control" name="complite_till" type="text" id="datetimepicker1" onclick="TaskPlusLibrary.generateDateTimePicker('datetimepicker1')">
+            <div class="input-group-addon" onclick="TaskPlusLibrary.generateDateTimePicker('datetimepicker1')"><span
                         class="ion-calendar"></span></div>
         </div>
     </div>

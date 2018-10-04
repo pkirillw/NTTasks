@@ -9,9 +9,9 @@
     <div class="form-group">
         <label>Время окончания задачи</label>
         <div class="input-group">
-            <input class="form-control" name="complite_till" onchange="TaskPlusLibrary.checkTime('datetimepicker1')"
+            <input class="form-control" name="complite_till" onclick="TaskPlusLibrary.generateDateTimePicker('datetimepicker1')"
                    type="text" value="{{ task.complite_till_format }}" id="datetimepicker1">
-            <div class="input-group-addon" onclick="$('#datetimepicker1').datetimepicker('show');"><span
+            <div class="input-group-addon" onclick="TaskPlusLibrary.generateDateTimePicker('datetimepicker1')"><span
                         class="ion-calendar"></span></div>
         </div>
     </div>

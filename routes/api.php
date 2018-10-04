@@ -34,6 +34,7 @@ Route::group([
         Route::post('update', 'TaskController@update');
         Route::post('miniEdit', 'TaskController@miniEdit');
         Route::post('checkTime', 'TaskController@checkTime');
+        Route::post('search', 'TaskController@search');
     });
 
     Route::group([

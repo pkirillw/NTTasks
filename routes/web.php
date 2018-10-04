@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/webhook/listen', 'WebHookController@listen');
+
 Route::get('/board/{id?}', 'BoardController@Board');
 Route::get('/oldBoard/{id?}', 'BoardController@oldBoard');
 Route::get('/expired/{id?}', 'BoardController@expired');

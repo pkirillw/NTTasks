@@ -40,8 +40,14 @@
     <div class="leftTasks_panel_body" id="leftTask_body_{{ task.id }}" style="">
 
         <div class="leftTasks_comment">
-            <h6>URL #1: <a href="{{ task.url1 }}" target="_blank">{{ task.url1_sub }}...</a></h6>
-            <h6>URL #2: <a href="{{ task.url2 }}" target="_blank">{{ task.url2_sub }}...</a></h6>
+            {% if (task.url1 != '') or (task.url2 != '') %}
+                {% if task.url1 != '' %}
+                    <h6>URL #1: <a href="{{ task.url1 }}" target="_blank">{{ task.url1_sub }}...</a></h6>
+                {% endif %}
+                {% if task.url2 != '' %}
+                    <h6>URL #2: <a href="{{ task.url2 }}" target="_blank">{{ task.url2_sub }}...</a></h6>
+                {% endif %}
+            {% endif %}
             <hr>
             <p id="comments_{{ task.id }}"></p>
         </div>

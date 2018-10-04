@@ -33,13 +33,7 @@ $(function () {
 
         }
     });
-    $('#datetimepicker1').datetimepicker({
-        lang: 'ru',
-        format: 'd.m.Y H:i',
-        dayOfWeekStart: 1,
-        step: 10
-    });
-    $('#datetimepicker2').datetimepicker({
+    $('#datetimepicker8').datetimepicker({
         lang: 'ru',
         i18n: {
             ru: {
@@ -53,7 +47,7 @@ $(function () {
         dayOfWeekStart: 1,
         step: 10
     });
-    $('#datetimepicker3').datetimepicker({
+    $('#datetimepicker9').datetimepicker({
         lang: 'ru',
         i18n: {
             ru: {
@@ -159,7 +153,16 @@ $(function () {
             $('input[name="number_request1"]').val($("#lead_select option:selected").text());
         });
     });
-
+    $('body').keyup(function () {
+        if((event.keyCode == 13) && (flagShowDropdown)){
+            setSearch();
+        }
+    });
+    $('#searchText').keyup(function(event){
+        if(event.keyCode == 13){
+            searchit();
+        }
+    });
 });
 
 /**
@@ -355,6 +358,37 @@ function searchit() {
     changeMode('search|' + $('#searchText').val());
 }
 
+function setSearch() {
+    let searchData = {
+        timeFrom: $('#datetimepicker8').val(),
+        timeTo: $('#datetimepicker9').val(),
+        type: $('#search_type_id').val(),
+        text: $('#searchText').val(),
+        end: $('#search_end').is(':checked'),
+        userId: $('meta[name="user_id"]').attr('content')
+    };
+    $.ajax({
+        type: 'POST',
+        url: settings.urls.api + 'tasks/search',
+        data: searchData,
+    }).done(function (data) {
+        if (data.status == 'success') {
+            renderBoard(data.data.tasks);
+
+        }
+    });
+}
+
+function clearSearch() {
+    $('#searchText').val('');
+    $('#datetimepicker8').val('');
+    $('#datetimepicker9').val('');
+    $('#search_type_id').val(0);
+    $('#search_end').prop('checked', false);
+    changeMode(mode);
+    openAdditionalMenuSearch();
+}
+
 function changeMode(inputMode) {
     mode = inputMode;
     var userId = $('meta[name="user_id"]').attr('content');
@@ -378,9 +412,10 @@ function setIntervalMenu() {
     $('#setIntervalMenuModal').modal('hide');
 }
 
-function checkTime(elementTag) {
+function checkTime(event, elementTag) {
     $('#' + elementTag + '_text').html('');
     $('#' + elementTag + '_text').hide();
+    $('#' + elementTag).datetimepicker('destroy');
     var dataOutput = {
         user_id: $('meta[name="user_id"]').attr('content'),
         time: $('#' + elementTag).val(),
@@ -411,15 +446,37 @@ function checkTime(elementTag) {
 
 function setTime(elementTag, time) {
     $('#' + elementTag).val(time);
-    $('#' + elementTag).trigger('change');
+    $('#' + elementTag + '_text').html('');
+    $('#' + elementTag + '_text').hide();
+}
+
+function generateDateTimePicker(element) {
+    $('#' + element).datetimepicker({
+        lang: 'ru',
+        i18n: {
+            ru: {
+                months: [
+                    'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август',
+                    'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',],
+                dayOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб.",],
+            }
+        },
+        format: 'd.m.Y H:i',
+        onChangeDateTime: function (dp, $input) {
+            checkTime(event, element);
+        },
+        dayOfWeekStart: 1,
+        step: 10,
+    });
+    $('#' + element).datetimepicker('show');
 }
 
 function openAdditionalMenuSearch() {
     if (flagShowDropdown) {
-        $(".dropdown").removeClass('open');
+        $("#search-filter").removeClass('show');
         flagShowDropdown = false;
     } else {
-        $(".dropdown").addClass('open');
+        $("#search-filter").addClass('show');
         flagShowDropdown = true;
     }
     return false;
